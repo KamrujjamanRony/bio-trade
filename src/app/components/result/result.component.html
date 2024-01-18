@@ -140,7 +140,7 @@
 </div>
 
 <!-- Heading -->
-<div class="bg-black p-[2px] rounded-md max-w-3xl mx-auto text-sm mt-5" [class.black-when-printing]="isPrinting">
+<div class="bg-black p-[2px] rounded-md max-w-4xl mx-auto text-sm mt-5" [class.black-when-printing]="isPrinting">
   <div class="bg-white p-1 rounded-md shadow-md">
     <div class="flex md:flex-row flex-col justify-between" [class.flex-when-printing]="isPrinting">
       <div class="flex justify-between relative">
@@ -351,7 +351,7 @@
 <div class="max-w-4xl mx-auto mt-5"  [class.margin-left-when-printing]="isPrinting">
   <!-- Comments -->
 @if (comment?.comments) {
-  <p class="max-w-5xl mx-auto text-sm">
+  <p class="max-w-5xl mx-auto text-sm mt-10">
     <span class="font-bold">Comments &nbsp;:</span>&nbsp;&nbsp;
     {{ comment.comments }}
   </p>

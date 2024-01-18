@@ -21,7 +21,7 @@
     }
     .black-when-printing {
       border: 2px solid black !important;
-      max-width: 600px !important;
+      max-width: 700px !important;
       font-size: small;
     }
     .position-when-printing {
