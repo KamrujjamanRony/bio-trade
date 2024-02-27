@@ -169,7 +169,7 @@ export class ResultComponent implements OnInit, OnDestroy {
       axisY: {
         title: 'Area',
         gridColor: "lightGray",
-        // maximum: 105,     
+        maximum: 105,     
         interval: 25,
       },
       axisX: {
