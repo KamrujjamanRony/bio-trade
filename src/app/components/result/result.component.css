@@ -11,7 +11,7 @@
       flex-direction: row !important;
     }
     .hide-when-printing {
-      display: none !important;
+      opacity: 0 !important;
     }
     .left-when-printing {
       margin: 0 auto !important;
