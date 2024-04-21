@@ -1,5 +1,5 @@
 import { CommonModule, DatePipe } from '@angular/common';
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit, inject } from '@angular/core';
 import { CanvasJSAngularChartsModule } from '@canvasjs/angular-charts';
 import { FormsModule } from '@angular/forms';
 import { Input, initTE, Select, Collapse } from 'tw-elements';
@@ -19,6 +19,7 @@ import { AdviceModel } from '../../features/model/Advice.model';
 import { AuthService } from '../../features/services/auth.service';
 import { DoctorModel } from '../../features/model/Doctor.model';
 import { DoctorService } from '../../features/services/doctor.service';
+import { DataService } from '../../features/services/data.service';
 
 @Component({
   selector: 'app-result',
@@ -28,6 +29,7 @@ import { DoctorService } from '../../features/services/doctor.service';
   styleUrl: './result.component.css',
 })
 export class ResultComponent implements OnInit, OnDestroy {
+  dataService = inject(DataService);
   id: string | null = null;
   mainUI?: MainUIModel;
   margin$?: Observable<MarginModel | undefined>;
@@ -57,6 +59,7 @@ export class ResultComponent implements OnInit, OnDestroy {
   Company$?: Observable<any[]>;
   Company: any = '';
   loading: boolean = false;
+  jsonData: any;
 
   constructor(
     private doctorService: DoctorService,
@@ -403,6 +406,12 @@ export class ResultComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit() {
+    this.dataService.getJsonData().subscribe(data => {
+      this.jsonData = data.normalRange.find((data: { id: any; }) => data.id == this.companyID);
+      console.log(this.jsonData)
+    });
+    console.log(this.companyID);
+    console.log(this.jsonData);
     initTE({ Input, Select, Collapse }, { allowReinits: true });
   }
 

@@ -2,87 +2,111 @@
   <!-- Patient form -->
   <form (ngSubmit)="onFormSubmit()" #myForm="ngForm" data-te-validation-init>
     <!-- Navbar Start -->
-      <div class="bg-primary-500">
-        <div class="navbar max-w-5xl mx-auto" [class.hide-when-printing]="true">
-          <div class="navbar-start">
-            <div class="dropdown">
-              <div tabindex="0" role="button" class="btn btn-ghost text-white lg:hidden">
-                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h8m-8 6h16" /></svg>
-              </div>
-              <ul tabindex="0" class="menu menu-sm dropdown-content mt-3 z-50 p-2 shadow bg-base-100 rounded-box w-52">
-                <li>
-                  <!-- Button trigger modal for Ref. Doctor-->
-              <button
-                type="button"
-                class="inline-block rounded bg-primary px-6 pb-2 pt-2.5 text-xs font-medium uppercase leading-normal text-white shadow-[0_4px_9px_-4px_#3b71ca] transition duration-150 ease-in-out hover:bg-primary-600 hover:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] focus:bg-primary-600 focus:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] focus:outline-none focus:ring-0 active:bg-primary-700 active:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] dark:shadow-[0_4px_9px_-4px_rgba(59,113,202,0.5)] dark:hover:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.2),0_4px_18px_0_rgba(59,113,202,0.1)] dark:focus:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.2),0_4px_18px_0_rgba(59,113,202,0.1)] dark:active:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.2),0_4px_18px_0_rgba(59,113,202,0.1)] my-1 text-center"
-                data-te-toggle="modal"
-                data-te-target="#refDoctor"
-                data-te-ripple-init
-                data-te-ripple-color="light"
+    <div class="bg-primary-500">
+      <div class="navbar max-w-5xl mx-auto" [class.hide-when-printing]="true">
+        <div class="navbar-start">
+          <div class="dropdown">
+            <div
+              tabindex="0"
+              role="button"
+              class="btn btn-ghost text-white lg:hidden"
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                class="h-5 w-5"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
               >
-                Set Ref. Doctor
-              </button>
-                </li>
-                <li>
-                  <!-- Button trigger modal for Seal -->
-              <button
-                type="button"
-                class="inline-block rounded bg-primary px-6 pb-2 pt-2.5 text-xs font-medium uppercase leading-normal text-white shadow-[0_4px_9px_-4px_#3b71ca] transition duration-150 ease-in-out hover:bg-primary-600 hover:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] focus:bg-primary-600 focus:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] focus:outline-none focus:ring-0 active:bg-primary-700 active:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] dark:shadow-[0_4px_9px_-4px_rgba(59,113,202,0.5)] dark:hover:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.2),0_4px_18px_0_rgba(59,113,202,0.1)] dark:focus:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.2),0_4px_18px_0_rgba(59,113,202,0.1)] dark:active:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.2),0_4px_18px_0_rgba(59,113,202,0.1)] my-1 text-center"
-                data-te-toggle="modal"
-                data-te-target="#exampleModalScrollable"
-                data-te-ripple-init
-                data-te-ripple-color="light"
-              >
-                Set Seal
-              </button>
-                </li>
-                <li>
-                  <!-- Button trigger modal for Comments-->
-              <button
-                type="button"
-                class="inline-block rounded bg-primary px-6 pb-2 pt-2.5 text-xs font-medium uppercase leading-normal text-white shadow-[0_4px_9px_-4px_#3b71ca] transition duration-150 ease-in-out hover:bg-primary-600 hover:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] focus:bg-primary-600 focus:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] focus:outline-none focus:ring-0 active:bg-primary-700 active:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] dark:shadow-[0_4px_9px_-4px_rgba(59,113,202,0.5)] dark:hover:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.2),0_4px_18px_0_rgba(59,113,202,0.1)] dark:focus:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.2),0_4px_18px_0_rgba(59,113,202,0.1)] dark:active:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.2),0_4px_18px_0_rgba(59,113,202,0.1)] my-1 text-center"
-                data-te-toggle="modal"
-                data-te-target="#setComment"
-                data-te-ripple-init
-                data-te-ripple-color="light"
-              >
-                Set Comments
-              </button>
-                </li>
-                <li>
-                  <!-- Button trigger modal for Advice -->
-              <button
-                type="button"
-                class="inline-block rounded bg-primary px-6 pb-2 pt-2.5 text-xs font-medium uppercase leading-normal text-white shadow-[0_4px_9px_-4px_#3b71ca] transition duration-150 ease-in-out hover:bg-primary-600 hover:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] focus:bg-primary-600 focus:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] focus:outline-none focus:ring-0 active:bg-primary-700 active:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] dark:shadow-[0_4px_9px_-4px_rgba(59,113,202,0.5)] dark:hover:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.2),0_4px_18px_0_rgba(59,113,202,0.1)] dark:focus:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.2),0_4px_18px_0_rgba(59,113,202,0.1)] dark:active:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.2),0_4px_18px_0_rgba(59,113,202,0.1)] my-1 text-center"
-                data-te-toggle="modal"
-                data-te-target="#setAdvice"
-                data-te-ripple-init
-                data-te-ripple-color="light"
-              >
-                Set Advice
-              </button>
-                </li>
-              </ul>
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M4 6h16M4 12h8m-8 6h16"
+                />
+              </svg>
             </div>
-            <a routerLink="" class="text-white font-bold cursor-pointer text-xl">{{Company?.name}}</a>
-          </div>
-          <div class="navbar-center hidden lg:flex">
-            <ul class="menu menu-horizontal px-1">
+            <ul
+              tabindex="0"
+              class="menu menu-sm dropdown-content mt-3 z-50 p-2 shadow bg-base-100 rounded-box w-52"
+            >
               <li>
                 <!-- Button trigger modal for Ref. Doctor-->
-              <button
-                type="button"
-                class="inline-block rounded bg-primary px-6 pb-2 pt-2.5 text-xs font-medium uppercase leading-normal text-white shadow-[0_4px_9px_-4px_#3b71ca] transition duration-150 ease-in-out hover:bg-primary-600 hover:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] focus:bg-primary-600 focus:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] focus:outline-none focus:ring-0 active:bg-primary-700 active:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] dark:shadow-[0_4px_9px_-4px_rgba(59,113,202,0.5)] dark:hover:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.2),0_4px_18px_0_rgba(59,113,202,0.1)] dark:focus:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.2),0_4px_18px_0_rgba(59,113,202,0.1)] dark:active:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.2),0_4px_18px_0_rgba(59,113,202,0.1)] mx-1"
-                data-te-toggle="modal"
-                data-te-target="#refDoctor"
-                data-te-ripple-init
-                data-te-ripple-color="light"
-              >
-                Set Ref. Doctor
-              </button>
+                <button
+                  type="button"
+                  class="inline-block rounded bg-primary px-6 pb-2 pt-2.5 text-xs font-medium uppercase leading-normal text-white shadow-[0_4px_9px_-4px_#3b71ca] transition duration-150 ease-in-out hover:bg-primary-600 hover:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] focus:bg-primary-600 focus:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] focus:outline-none focus:ring-0 active:bg-primary-700 active:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] dark:shadow-[0_4px_9px_-4px_rgba(59,113,202,0.5)] dark:hover:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.2),0_4px_18px_0_rgba(59,113,202,0.1)] dark:focus:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.2),0_4px_18px_0_rgba(59,113,202,0.1)] dark:active:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.2),0_4px_18px_0_rgba(59,113,202,0.1)] my-1 text-center"
+                  data-te-toggle="modal"
+                  data-te-target="#refDoctor"
+                  data-te-ripple-init
+                  data-te-ripple-color="light"
+                >
+                  Set Ref. Doctor
+                </button>
               </li>
               <li>
                 <!-- Button trigger modal for Seal -->
+                <button
+                  type="button"
+                  class="inline-block rounded bg-primary px-6 pb-2 pt-2.5 text-xs font-medium uppercase leading-normal text-white shadow-[0_4px_9px_-4px_#3b71ca] transition duration-150 ease-in-out hover:bg-primary-600 hover:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] focus:bg-primary-600 focus:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] focus:outline-none focus:ring-0 active:bg-primary-700 active:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] dark:shadow-[0_4px_9px_-4px_rgba(59,113,202,0.5)] dark:hover:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.2),0_4px_18px_0_rgba(59,113,202,0.1)] dark:focus:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.2),0_4px_18px_0_rgba(59,113,202,0.1)] dark:active:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.2),0_4px_18px_0_rgba(59,113,202,0.1)] my-1 text-center"
+                  data-te-toggle="modal"
+                  data-te-target="#exampleModalScrollable"
+                  data-te-ripple-init
+                  data-te-ripple-color="light"
+                >
+                  Set Seal
+                </button>
+              </li>
+              <li>
+                <!-- Button trigger modal for Comments-->
+                <button
+                  type="button"
+                  class="inline-block rounded bg-primary px-6 pb-2 pt-2.5 text-xs font-medium uppercase leading-normal text-white shadow-[0_4px_9px_-4px_#3b71ca] transition duration-150 ease-in-out hover:bg-primary-600 hover:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] focus:bg-primary-600 focus:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] focus:outline-none focus:ring-0 active:bg-primary-700 active:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] dark:shadow-[0_4px_9px_-4px_rgba(59,113,202,0.5)] dark:hover:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.2),0_4px_18px_0_rgba(59,113,202,0.1)] dark:focus:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.2),0_4px_18px_0_rgba(59,113,202,0.1)] dark:active:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.2),0_4px_18px_0_rgba(59,113,202,0.1)] my-1 text-center"
+                  data-te-toggle="modal"
+                  data-te-target="#setComment"
+                  data-te-ripple-init
+                  data-te-ripple-color="light"
+                >
+                  Set Comments
+                </button>
+              </li>
+              <li>
+                <!-- Button trigger modal for Advice -->
+                <button
+                  type="button"
+                  class="inline-block rounded bg-primary px-6 pb-2 pt-2.5 text-xs font-medium uppercase leading-normal text-white shadow-[0_4px_9px_-4px_#3b71ca] transition duration-150 ease-in-out hover:bg-primary-600 hover:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] focus:bg-primary-600 focus:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] focus:outline-none focus:ring-0 active:bg-primary-700 active:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] dark:shadow-[0_4px_9px_-4px_rgba(59,113,202,0.5)] dark:hover:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.2),0_4px_18px_0_rgba(59,113,202,0.1)] dark:focus:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.2),0_4px_18px_0_rgba(59,113,202,0.1)] dark:active:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.2),0_4px_18px_0_rgba(59,113,202,0.1)] my-1 text-center"
+                  data-te-toggle="modal"
+                  data-te-target="#setAdvice"
+                  data-te-ripple-init
+                  data-te-ripple-color="light"
+                >
+                  Set Advice
+                </button>
+              </li>
+            </ul>
+          </div>
+          <a
+            routerLink=""
+            class="text-white font-bold cursor-pointer text-xl"
+            >{{ Company?.name }}</a
+          >
+        </div>
+        <div class="navbar-center hidden lg:flex">
+          <ul class="menu menu-horizontal px-1">
+            <li>
+              <!-- Button trigger modal for Ref. Doctor-->
+              <button
+                type="button"
+                class="inline-block rounded bg-primary px-6 pb-2 pt-2.5 text-xs font-medium uppercase leading-normal text-white shadow-[0_4px_9px_-4px_#3b71ca] transition duration-150 ease-in-out hover:bg-primary-600 hover:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] focus:bg-primary-600 focus:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] focus:outline-none focus:ring-0 active:bg-primary-700 active:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] dark:shadow-[0_4px_9px_-4px_rgba(59,113,202,0.5)] dark:hover:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.2),0_4px_18px_0_rgba(59,113,202,0.1)] dark:focus:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.2),0_4px_18px_0_rgba(59,113,202,0.1)] dark:active:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.2),0_4px_18px_0_rgba(59,113,202,0.1)] mx-1"
+                data-te-toggle="modal"
+                data-te-target="#refDoctor"
+                data-te-ripple-init
+                data-te-ripple-color="light"
+              >
+                Set Ref. Doctor
+              </button>
+            </li>
+            <li>
+              <!-- Button trigger modal for Seal -->
               <button
                 type="button"
                 class="inline-block rounded bg-primary px-6 pb-2 pt-2.5 text-xs font-medium uppercase leading-normal text-white shadow-[0_4px_9px_-4px_#3b71ca] transition duration-150 ease-in-out hover:bg-primary-600 hover:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] focus:bg-primary-600 focus:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] focus:outline-none focus:ring-0 active:bg-primary-700 active:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] dark:shadow-[0_4px_9px_-4px_rgba(59,113,202,0.5)] dark:hover:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.2),0_4px_18px_0_rgba(59,113,202,0.1)] dark:focus:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.2),0_4px_18px_0_rgba(59,113,202,0.1)] dark:active:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.2),0_4px_18px_0_rgba(59,113,202,0.1)] mx-1"
@@ -93,9 +117,9 @@
               >
                 Set Seal
               </button>
-              </li>
-              <li>
-                <!-- Button trigger modal for Comments-->
+            </li>
+            <li>
+              <!-- Button trigger modal for Comments-->
               <button
                 type="button"
                 class="inline-block rounded bg-primary px-6 pb-2 pt-2.5 text-xs font-medium uppercase leading-normal text-white shadow-[0_4px_9px_-4px_#3b71ca] transition duration-150 ease-in-out hover:bg-primary-600 hover:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] focus:bg-primary-600 focus:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] focus:outline-none focus:ring-0 active:bg-primary-700 active:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] dark:shadow-[0_4px_9px_-4px_rgba(59,113,202,0.5)] dark:hover:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.2),0_4px_18px_0_rgba(59,113,202,0.1)] dark:focus:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.2),0_4px_18px_0_rgba(59,113,202,0.1)] dark:active:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.2),0_4px_18px_0_rgba(59,113,202,0.1)] mx-1"
@@ -106,9 +130,9 @@
               >
                 Set Comments
               </button>
-              </li>
-              <li>
-                <!-- Button trigger modal for Advice -->
+            </li>
+            <li>
+              <!-- Button trigger modal for Advice -->
               <button
                 type="button"
                 class="inline-block rounded bg-primary px-6 pb-2 pt-2.5 text-xs font-medium uppercase leading-normal text-white shadow-[0_4px_9px_-4px_#3b71ca] transition duration-150 ease-in-out hover:bg-primary-600 hover:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] focus:bg-primary-600 focus:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] focus:outline-none focus:ring-0 active:bg-primary-700 active:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] dark:shadow-[0_4px_9px_-4px_rgba(59,113,202,0.5)] dark:hover:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.2),0_4px_18px_0_rgba(59,113,202,0.1)] dark:focus:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.2),0_4px_18px_0_rgba(59,113,202,0.1)] dark:active:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.2),0_4px_18px_0_rgba(59,113,202,0.1)] mx-1"
@@ -119,12 +143,12 @@
               >
                 Set Advice
               </button>
-              </li>
-            </ul>
-          </div>
-          <div class="navbar-end">
-            <!-- Form submit button -->
-            <button
+            </li>
+          </ul>
+        </div>
+        <div class="navbar-end">
+          <!-- Form submit button -->
+          <button
             data-te-submit-btn-ref
             Validate
             [disabled]="
@@ -140,21 +164,37 @@
             data-te-ripple-init
             class="inline-block rounded bg-success md:px-6 px-2 md:py-2 py-1 text-xs font-medium uppercase leading-normal text-white shadow-[0_4px_9px_-4px_#14a44d] transition duration-150 ease-in-out hover:bg-success-600 hover:shadow-[0_8px_9px_-4px_rgba(20,164,77,0.3),0_4px_18px_0_rgba(20,164,77,0.2)] focus:bg-success-600 focus:shadow-[0_8px_9px_-4px_rgba(20,164,77,0.3),0_4px_18px_0_rgba(20,164,77,0.2)] focus:outline-none focus:ring-0 active:bg-success-700 active:shadow-[0_8px_9px_-4px_rgba(20,164,77,0.3),0_4px_18px_0_rgba(20,164,77,0.2)] dark:shadow-[0_4px_9px_-4px_rgba(20,164,77,0.5)] dark:hover:shadow-[0_8px_9px_-4px_rgba(20,164,77,0.2),0_4px_18px_0_rgba(20,164,77,0.1)] dark:focus:shadow-[0_8px_9px_-4px_rgba(20,164,77,0.2),0_4px_18px_0_rgba(20,164,77,0.1)] dark:active:shadow-[0_8px_9px_-4px_rgba(20,164,77,0.2),0_4px_18px_0_rgba(20,164,77,0.1)] mx-1 md:mx-2"
           >
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-5 h-5">
-            <path d="M5.055 7.06c-1.25-.714-2.805.189-2.805 1.628v8.123c0 1.44 1.555 2.342 2.805 1.628L12 14.471v2.34c0 1.44 1.555 2.342 2.805 1.628l7.108-4.061c1.26-.72 1.26-2.536 0-3.256L14.805 7.06C13.555 6.346 12 7.25 12 8.688v2.34L5.055 7.06z" />
-          </svg>
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 24 24"
+              fill="currentColor"
+              class="w-5 h-5"
+            >
+              <path
+                d="M5.055 7.06c-1.25-.714-2.805.189-2.805 1.628v8.123c0 1.44 1.555 2.342 2.805 1.628L12 14.471v2.34c0 1.44 1.555 2.342 2.805 1.628l7.108-4.061c1.26-.72 1.26-2.536 0-3.256L14.805 7.06C13.555 6.346 12 7.25 12 8.688v2.34L5.055 7.06z"
+              />
+            </svg>
           </button>
-  
+
           <!-- Reset Form Button -->
           <button
             type="button"
             (click)="resetMainForm()"
             class="inline-block rounded bg-neutral-50 md:px-6 px-2 md:py-2 py-1 text-xs font-medium uppercase leading-normal text-neutral-800 shadow-[0_4px_9px_-4px_#cbcbcb] transition duration-150 ease-in-out hover:bg-neutral-100 hover:shadow-[0_8px_9px_-4px_rgba(203,203,203,0.3),0_4px_18px_0_rgba(203,203,203,0.2)] focus:bg-neutral-100 focus:shadow-[0_8px_9px_-4px_rgba(203,203,203,0.3),0_4px_18px_0_rgba(203,203,203,0.2)] focus:outline-none focus:ring-0 active:bg-neutral-200 active:shadow-[0_8px_9px_-4px_rgba(203,203,203,0.3),0_4px_18px_0_rgba(203,203,203,0.2)] dark:shadow-[0_4px_9px_-4px_rgba(251,251,251,0.3)] dark:hover:shadow-[0_8px_9px_-4px_rgba(251,251,251,0.1),0_4px_18px_0_rgba(251,251,251,0.05)] dark:focus:shadow-[0_8px_9px_-4px_rgba(251,251,251,0.1),0_4px_18px_0_rgba(251,251,251,0.05)] dark:active:shadow-[0_8px_9px_-4px_rgba(251,251,251,0.1),0_4px_18px_0_rgba(251,251,251,0.05)]"
           >
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-5 h-5">
-            <path d="M21.731 2.269a2.625 2.625 0 00-3.712 0l-1.157 1.157 3.712 3.712 1.157-1.157a2.625 2.625 0 000-3.712zM19.513 8.199l-3.712-3.712-8.4 8.4a5.25 5.25 0 00-1.32 2.214l-.8 2.685a.75.75 0 00.933.933l2.685-.8a5.25 5.25 0 002.214-1.32l8.4-8.4z" />
-            <path d="M5.25 5.25a3 3 0 00-3 3v10.5a3 3 0 003 3h10.5a3 3 0 003-3V13.5a.75.75 0 00-1.5 0v5.25a1.5 1.5 0 01-1.5 1.5H5.25a1.5 1.5 0 01-1.5-1.5V8.25a1.5 1.5 0 011.5-1.5h5.25a.75.75 0 000-1.5H5.25z" />
-          </svg>
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 24 24"
+              fill="currentColor"
+              class="w-5 h-5"
+            >
+              <path
+                d="M21.731 2.269a2.625 2.625 0 00-3.712 0l-1.157 1.157 3.712 3.712 1.157-1.157a2.625 2.625 0 000-3.712zM19.513 8.199l-3.712-3.712-8.4 8.4a5.25 5.25 0 00-1.32 2.214l-.8 2.685a.75.75 0 00.933.933l2.685-.8a5.25 5.25 0 002.214-1.32l8.4-8.4z"
+              />
+              <path
+                d="M5.25 5.25a3 3 0 00-3 3v10.5a3 3 0 003 3h10.5a3 3 0 003-3V13.5a.75.75 0 00-1.5 0v5.25a1.5 1.5 0 01-1.5 1.5H5.25a1.5 1.5 0 01-1.5-1.5V8.25a1.5 1.5 0 011.5-1.5h5.25a.75.75 0 000-1.5H5.25z"
+              />
+            </svg>
           </button>
           <!-- Log out Button -->
           <button
@@ -162,21 +202,31 @@
             (click)="logOut()"
             class="inline-block rounded bg-danger md:px-6 px-2 md:py-2 py-1 text-xs font-medium leading-normal text-white shadow-[0_4px_9px_-4px_#dc4c64] transition duration-150 ease-in-out hover:bg-danger-600 hover:shadow-[0_8px_9px_-4px_rgba(220,76,100,0.3),0_4px_18px_0_rgba(220,76,100,0.2)] focus:bg-danger-600 focus:shadow-[0_8px_9px_-4px_rgba(220,76,100,0.3),0_4px_18px_0_rgba(220,76,100,0.2)] focus:outline-none focus:ring-0 active:bg-danger-700 active:shadow-[0_8px_9px_-4px_rgba(220,76,100,0.3),0_4px_18px_0_rgba(220,76,100,0.2)] dark:shadow-[0_4px_9px_-4px_rgba(220,76,100,0.5)] dark:hover:shadow-[0_8px_9px_-4px_rgba(220,76,100,0.2),0_4px_18px_0_rgba(220,76,100,0.1)] dark:focus:shadow-[0_8px_9px_-4px_rgba(220,76,100,0.2),0_4px_18px_0_rgba(220,76,100,0.1)] dark:active:shadow-[0_8px_9px_-4px_rgba(220,76,100,0.2),0_4px_18px_0_rgba(220,76,100,0.1)] mx-1 md:mx-2"
           >
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-5 h-5">
-            <path fill-rule="evenodd" d="M15.75 2.25H21a.75.75 0 01.75.75v5.25a.75.75 0 01-1.5 0V4.81L8.03 17.03a.75.75 0 01-1.06-1.06L19.19 3.75h-3.44a.75.75 0 010-1.5zm-10.5 4.5a1.5 1.5 0 00-1.5 1.5v10.5a1.5 1.5 0 001.5 1.5h10.5a1.5 1.5 0 001.5-1.5V10.5a.75.75 0 011.5 0v8.25a3 3 0 01-3 3H5.25a3 3 0 01-3-3V8.25a3 3 0 013-3h8.25a.75.75 0 010 1.5H5.25z" clip-rule="evenodd" />
-          </svg>
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 24 24"
+              fill="currentColor"
+              class="w-5 h-5"
+            >
+              <path
+                fill-rule="evenodd"
+                d="M15.75 2.25H21a.75.75 0 01.75.75v5.25a.75.75 0 01-1.5 0V4.81L8.03 17.03a.75.75 0 01-1.06-1.06L19.19 3.75h-3.44a.75.75 0 010-1.5zm-10.5 4.5a1.5 1.5 0 00-1.5 1.5v10.5a1.5 1.5 0 001.5 1.5h10.5a1.5 1.5 0 001.5-1.5V10.5a.75.75 0 011.5 0v8.25a3 3 0 01-3 3H5.25a3 3 0 01-3-3V8.25a3 3 0 013-3h8.25a.75.75 0 010 1.5H5.25z"
+                clip-rule="evenodd"
+              />
+            </svg>
           </button>
-          </div>
         </div>
       </div>
-      <!-- Navbar End -->
-      @if (loading) {
-        <span class="loading loading-infinity loading-lg"></span>
-      }
+    </div>
+    <!-- Navbar End -->
+    @if (originalMainUI.length == 0) {<p class="text-rose-600 text-lg text-center">Please Wait for Loading...</p>}
+    @if (loading) {
+    <span class="loading loading-infinity loading-lg"></span>
+    }
     <div class="max-w-5xl mx-auto mt-5 px-2 md:px-5">
       <!-- Show toast -->
       @if (isFormValid) {
-        <div
+      <div
         class="pointer-events-auto mx-auto mb-4 hidden w-96 max-w-full rounded-lg bg-danger-100 bg-clip-padding text-sm text-danger-700 shadow-lg shadow-black/5 data-[te-toast-show]:block data-[te-toast-hide]:hidden"
         id="static-example"
         role="alert"
@@ -184,19 +234,23 @@
         aria-atomic="true"
         data-te-autohide="false"
         data-te-toast-init
-        data-te-toast-show>
+        data-te-toast-show
+      >
         <div
-          class="flex items-center justify-between rounded-t-lg border-b-2 border-danger-200 bg-danger-100 bg-clip-padding px-4 pb-2 pt-2.5 text-danger-700">
+          class="flex items-center justify-between rounded-t-lg border-b-2 border-danger-200 bg-danger-100 bg-clip-padding px-4 pb-2 pt-2.5 text-danger-700"
+        >
           <p class="flex items-center font-bold text-danger-700">
             <span class="mr-2 h-4 w-4">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 viewBox="0 0 24 24"
-                fill="currentColor">
+                fill="currentColor"
+              >
                 <path
                   fill-rule="evenodd"
                   d="M12 2.25c-5.385 0-9.75 4.365-9.75 9.75s4.365 9.75 9.75 9.75 9.75-4.365 9.75-9.75S17.385 2.25 12 2.25zm-1.72 6.97a.75.75 0 10-1.06 1.06L10.94 12l-1.72 1.72a.75.75 0 101.06 1.06L12 13.06l1.72 1.72a.75.75 0 101.06-1.06L13.06 12l1.72-1.72a.75.75 0 10-1.06-1.06L12 10.94l-1.72-1.72z"
-                  clip-rule="evenodd" />
+                  clip-rule="evenodd"
+                />
               </svg>
             </span>
             Form Invalid!
@@ -207,35 +261,42 @@
               (click)="toastClose()"
               class="ml-2 box-content rounded-none border-none opacity-80 hover:no-underline hover:opacity-75 focus:opacity-100 focus:shadow-none focus:outline-none"
               data-te-toast-dismiss
-              aria-label="Close">
+              aria-label="Close"
+            >
               <span
-                class="w-[1em] focus:opacity-100 disabled:pointer-events-none disabled:select-none disabled:opacity-25 [&.disabled]:pointer-events-none [&.disabled]:select-none [&.disabled]:opacity-25">
+                class="w-[1em] focus:opacity-100 disabled:pointer-events-none disabled:select-none disabled:opacity-25 [&.disabled]:pointer-events-none [&.disabled]:select-none [&.disabled]:opacity-25"
+              >
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   fill="none"
                   viewBox="0 0 24 24"
                   stroke-width="1.5"
                   stroke="currentColor"
-                  class="h-6 w-6">
+                  class="h-6 w-6"
+                >
                   <path
                     stroke-linecap="round"
                     stroke-linejoin="round"
-                    d="M6 18L18 6M6 6l12 12" />
+                    d="M6 18L18 6M6 6l12 12"
+                  />
                 </svg>
               </span>
             </button>
           </div>
         </div>
         <div
-          class="break-words rounded-b-lg bg-danger-100 px-4 py-4 text-danger-700">
+          class="break-words rounded-b-lg bg-danger-100 px-4 py-4 text-danger-700"
+        >
           Patient ID, Patient Name & Patient Age is Required.
         </div>
       </div>
-    }
+      }
+      
+     
       <!-- Input Row 01 -->
       <div class="w-full flex md:flex-row flex-col gap-2 md:gap-5 mb-2 md:mb-0">
-          <div class="w-full md:w-[30%]">
-            <div
+        <div class="w-full md:w-[30%]">
+          <div
             class="relative mb-1 md:mb-3 w-full"
             data-te-input-wrapper-init
             data-te-validate="input"
@@ -264,7 +325,8 @@
               minlength="2"
             />
             <!-- Display the matching patient names -->
-            @if (modelMainUI.pid.length > 0 && searchMainUI.length > 0 && isInputFocused) {
+            @if (modelMainUI.pid.length > 0 && searchMainUI.length > 0 &&
+            isInputFocused) {
             <div
               #searchResults
               class="search-results max-h-[60vh] w-96 overflow-y-auto rounded-md bg-gradient-to-l from-violet-300 to-fuchsia-300"
@@ -287,30 +349,30 @@
             </div>
             }
           </div>
-          </div>
-          <div
-            class="w-full relative mb-1 md:mb-3"
-            id="datepicker-disable-future"
-            data-te-format="yyyy-mm-dd"
-            data-te-datepicker-init
-            data-te-input-wrapper-init
-          >
-            <label
-              for="date"
-              class="absolute left-3 top-0 max-w-[90%] origin-[0_0] translate-y-[-0.7rem] scale-[0.8] text-primary bg-white px-2 z-10"
-              >Date
-            </label>
-            <input
-              autocomplete="off"
-              type="text"
-              class="block min-h-[auto] w-full rounded border-0 bg-transparent px-3 py-[0.32rem] leading-[1.6] outline-none relative"
-              placeholder="Select a date"
-              id="date"
-              name="date"
-              [(ngModel)]="modelMainUI.date"
-              (focus)="onOtherFocus()"
-            />
-          </div>
+        </div>
+        <div
+          class="w-full relative mb-1 md:mb-3"
+          id="datepicker-disable-future"
+          data-te-format="yyyy-mm-dd"
+          data-te-datepicker-init
+          data-te-input-wrapper-init
+        >
+          <label
+            for="date"
+            class="absolute left-3 top-0 max-w-[90%] origin-[0_0] translate-y-[-0.7rem] scale-[0.8] text-primary bg-white px-2 z-10"
+            >Date
+          </label>
+          <input
+            autocomplete="off"
+            type="text"
+            class="block min-h-[auto] w-full rounded border-0 bg-transparent px-3 py-[0.32rem] leading-[1.6] outline-none relative"
+            placeholder="Select a date"
+            id="date"
+            name="date"
+            [(ngModel)]="modelMainUI.date"
+            (focus)="onOtherFocus()"
+          />
+        </div>
       </div>
 
       <!-- Input Row 02 -->
@@ -334,23 +396,23 @@
             />
           </div>
         </div>
-          <div class="relative mb-1 md:mb-3 w-full" data-te-input-wrapper-init>
-            <label
-              for="name"
-              class="absolute left-3 top-0 max-w-[90%] origin-[0_0] translate-y-[-0.7rem] scale-[0.8] text-primary bg-white px-2 z-10"
-              >Patient Name
-            </label>
-            <input
-              autocomplete="off"
-              type="text"
-              class="block min-h-[auto] w-full rounded border-0 bg-transparent px-3 py-[0.32rem] leading-[1.6] outline-none relative"
-              id="name"
-              name="name"
-              [(ngModel)]="modelMainUI.name"
-              (focus)="onOtherFocus()"
-              placeholder="Patient Name"
-            />
-          </div>
+        <div class="relative mb-1 md:mb-3 w-full" data-te-input-wrapper-init>
+          <label
+            for="name"
+            class="absolute left-3 top-0 max-w-[90%] origin-[0_0] translate-y-[-0.7rem] scale-[0.8] text-primary bg-white px-2 z-10"
+            >Patient Name
+          </label>
+          <input
+            autocomplete="off"
+            type="text"
+            class="block min-h-[auto] w-full rounded border-0 bg-transparent px-3 py-[0.32rem] leading-[1.6] outline-none relative"
+            id="name"
+            name="name"
+            [(ngModel)]="modelMainUI.name"
+            (focus)="onOtherFocus()"
+            placeholder="Patient Name"
+          />
+        </div>
       </div>
 
       <!-- Input Row 03 -->
@@ -364,36 +426,59 @@
               (focus)="onOtherFocus()"
               data-te-select-init
             >
-              <option value="N/A" [attr.selected]="modelMainUI.sex === 'N/A' ? true : null">Select Sex</option>
-              <option value="Male" [attr.selected]="modelMainUI.sex === 'Male' ? true : null">Male</option>
-              <option value="Female" [attr.selected]="modelMainUI.sex === 'Female' ? true : null">Female</option>
-              <option value="Others" [attr.selected]="modelMainUI.sex === 'Others' ? true : null">Others</option>
+              <option
+                value="N/A"
+                [attr.selected]="modelMainUI.sex === 'N/A' ? true : null"
+              >
+                Select Sex
+              </option>
+              <option
+                value="Male"
+                [attr.selected]="modelMainUI.sex === 'Male' ? true : null"
+              >
+                Male
+              </option>
+              <option
+                value="Female"
+                [attr.selected]="modelMainUI.sex === 'Female' ? true : null"
+              >
+                Female
+              </option>
+              <option
+                value="Others"
+                [attr.selected]="modelMainUI.sex === 'Others' ? true : null"
+              >
+                Others
+              </option>
             </select>
             <label data-te-select-label-ref for="sex" class="text-primary"
               >Sex</label
             >
           </div>
         </div>
-          <div class="relative mb-1 md:mb-3 w-full">
-            <select
-              id="refCode"
-              name="refCode"
-              [(ngModel)]="modelMainUI.refCode"
-              (focus)="onOtherFocus()"
-              data-te-select-init
-              data-te-select-filter="true"
+        <div class="relative mb-1 md:mb-3 w-full">
+          <select
+            id="refCode"
+            name="refCode"
+            [(ngModel)]="modelMainUI.refCode"
+            (focus)="onOtherFocus()"
+            data-te-select-init
+            data-te-select-filter="true"
+          >
+            <option value="0">Select a Doctor</option>
+            @for (item of doctors; track item?.id) {
+            <option
+              value="{{ item.code }}"
+              [attr.selected]="modelMainUI.refCode == item.code ? true : null"
             >
-              <option value="0">Select a Doctor</option>
-              @for (item of doctors; track item?.id) {
-              <option value="{{ item.code }}" [attr.selected]="modelMainUI.refCode == item.code ? true : null">
-                {{ item.code }}---{{ item.name }}
-              </option>
-              }
-            </select>
-            <label for="refCode" data-te-select-label-ref class="text-primary"
-              >Refer Doctor</label
-            >
-          </div>
+              {{ item.code }}---{{ item.name }}
+            </option>
+            }
+          </select>
+          <label for="refCode" data-te-select-label-ref class="text-primary"
+            >Refer Doctor</label
+          >
+        </div>
       </div>
 
       <!-- Result Table -->
@@ -413,7 +498,9 @@
                 </thead>
                 <tbody>
                   <tr class="border-b border-primary-700 text-neutral-800">
-                    <td class="whitespace-nowrap px-6 py-1 font-bold">Hb Barts</td>
+                    <td class="whitespace-nowrap px-6 py-1 font-bold">
+                      Hb Barts
+                    </td>
                     <td class="whitespace-nowrap px-6 py-1 font-medium">
                       <input
                         autocomplete="off"
@@ -425,7 +512,9 @@
                         class="border-2 w-24 border-secondary-900"
                       />
                     </td>
-                    <td class="whitespace-nowrap px-6 py-1 font-medium"></td>
+                    <td class="whitespace-nowrap px-6 py-1 font-medium">
+                      @if (jsonData) {{{jsonData?.hbBarts}}} @else {}
+                    </td>
                   </tr>
                   <tr class="border-b border-primary-700 text-neutral-800">
                     <td class="whitespace-nowrap px-6 py-1 font-bold">Hb F</td>
@@ -440,7 +529,9 @@
                         class="border-2 w-24 border-secondary-900"
                       />
                     </td>
-                    <td class="whitespace-nowrap px-6 py-1 font-medium"><2</td>
+                    <td class="whitespace-nowrap px-6 py-1 font-medium">
+                      @if (jsonData) {{{jsonData?.hbF}}} @else {<2}
+                    </td>
                   </tr>
                   <tr class="border-b border-primary-700 text-neutral-800">
                     <td class="whitespace-nowrap px-6 py-1 font-bold">Hb J</td>
@@ -454,6 +545,9 @@
                         (focus)="onOtherFocus()"
                         class="border-2 w-24 border-secondary-900"
                       />
+                    </td>
+                    <td class="whitespace-nowrap px-6 py-1 font-medium">
+                      @if (jsonData) {{{jsonData?.hbJ}}} @else {}
                     </td>
                   </tr>
                   <tr class="border-b border-primary-700 text-neutral-800">
@@ -470,7 +564,7 @@
                       />
                     </td>
                     <td class="whitespace-nowrap px-6 py-1 font-medium">
-                      96.1-98.5
+                      @if (jsonData) {{{jsonData?.hbA}}} @else {96.1-98.5}
                     </td>
                   </tr>
                   <tr class="border-b border-primary-700 text-neutral-800">
@@ -487,6 +581,9 @@
                         (focus)="onOtherFocus()"
                         class="border-2 w-24 border-secondary-900"
                       />
+                    </td>
+                    <td class="whitespace-nowrap px-6 py-1 font-medium">
+                      @if (jsonData) {{{jsonData?.hbL}}} @else {}
                     </td>
                   </tr>
                   <tr class="border-b border-primary-700 text-neutral-800">
@@ -505,7 +602,7 @@
                       />
                     </td>
                     <td class="whitespace-nowrap px-6 py-1 font-medium">
-                      2-3.5
+                      @if (jsonData) {{{jsonData?.hbA2}}} @else {2-3.5}
                     </td>
                   </tr>
                   <tr class="border-b border-primary-700 text-neutral-800">
@@ -521,6 +618,9 @@
                         class="border-2 w-24 border-secondary-900"
                       />
                     </td>
+                    <td class="whitespace-nowrap px-6 py-1 font-medium">
+                      @if (jsonData) {{{jsonData?.hbE}}} @else {}
+                    </td>
                   </tr>
                   <tr class="border-b border-primary-700 text-neutral-800">
                     <td class="whitespace-nowrap px-6 py-1 font-bold">Hb D</td>
@@ -534,6 +634,9 @@
                         (focus)="onOtherFocus()"
                         class="border-2 w-24 border-secondary-900"
                       />
+                    </td>
+                    <td class="whitespace-nowrap px-6 py-1 font-medium">
+                      @if (jsonData) {{{jsonData?.hbD}}} @else {}
                     </td>
                   </tr>
                   <tr class="border-b border-primary-700 text-neutral-800">
@@ -549,8 +652,14 @@
                         class="border-2 w-24 border-secondary-900"
                       />
                     </td>
+                    <td class="whitespace-nowrap px-6 py-1 font-medium">
+                      @if (jsonData) {{{jsonData?.hbS}}} @else {}
+                    </td>
                   </tr>
-                  <tr class="border-b border-primary-700 text-neutral-800" hidden>
+                  <tr
+                    class="border-b border-primary-700 text-neutral-800"
+                    hidden
+                  >
                     <td class="whitespace-nowrap px-6 py-1 font-bold">Hb Q</td>
                     <td class="whitespace-nowrap px-6 py-1 font-medium">
                       <input
@@ -563,8 +672,13 @@
                         class="border-2 w-24 border-secondary-900"
                       />
                     </td>
+                    <td class="whitespace-nowrap px-6 py-1 font-medium">
+                      @if (jsonData) {{{jsonData?.hbQ}}} @else {}
+                    </td>
                   </tr>
-                  <tr class="border-b border-primary-700 text-neutral-800 hidden">
+                  <tr
+                    class="border-b border-primary-700 text-neutral-800 hidden"
+                  >
                     <td class="whitespace-nowrap px-6 py-1 font-bold">Hb C</td>
                     <td class="whitespace-nowrap px-6 py-1 font-medium">
                       <input
@@ -577,11 +691,12 @@
                         class="border-2 w-24 border-secondary-900"
                       />
                     </td>
+                    <td class="whitespace-nowrap px-6 py-1 font-medium">
+                      @if (jsonData) {{{jsonData?.hbC}}} @else {}
+                    </td>
                   </tr>
                   <tr class="border-b border-primary-700 text-neutral-800">
-                    <td class="whitespace-nowrap px-6 py-1 font-bold">
-                      Hb
-                    </td>
+                    <td class="whitespace-nowrap px-6 py-1 font-bold">Hb</td>
                     <td class="whitespace-nowrap px-6 py-1 font-medium">
                       <input
                         autocomplete="off"
@@ -599,16 +714,18 @@
                     <td class="whitespace-nowrap px-6 py-1 font-medium">
                       Total =
                       {{
-                        ((+modelMainUI.hbA) +
-                          (+modelMainUI.hbF) +
-                          (+modelMainUI.hbD) +
-                          (+modelMainUI.hbE) +
-                          (+modelMainUI.hbA2) +
-                          (+modelMainUI.hbJ) +
-                          (+modelMainUI.hbL) +
-                          (+modelMainUI.hbQ) +
-                          (+modelMainUI.hbS) +
-                          (+modelMainUI.hbBarts)).toFixed(1)
+                        (
+                          +modelMainUI.hbA +
+                          +modelMainUI.hbF +
+                          +modelMainUI.hbD +
+                          +modelMainUI.hbE +
+                          +modelMainUI.hbA2 +
+                          +modelMainUI.hbJ +
+                          +modelMainUI.hbL +
+                          +modelMainUI.hbQ +
+                          +modelMainUI.hbS +
+                          +modelMainUI.hbBarts
+                        ).toFixed(1)
                       }}
                     </td>
                   </tr>
@@ -620,48 +737,47 @@
       </div>
 
       <!-- Show toast -->
-      @if ((+modelMainUI.hbA) +
-      (+modelMainUI.hbF) +
-      (+modelMainUI.hbD) +
-      (+modelMainUI.hbE) +
-      (+modelMainUI.hbA2) +
-      (+modelMainUI.hbJ) +
-      (+modelMainUI.hbL) +
-      (+modelMainUI.hbQ) +
-      (+modelMainUI.hbS) +
-      (+modelMainUI.hbBarts) >
-    100.05) {
+      @if ((+modelMainUI.hbA) + (+modelMainUI.hbF) + (+modelMainUI.hbD) +
+      (+modelMainUI.hbE) + (+modelMainUI.hbA2) + (+modelMainUI.hbJ) +
+      (+modelMainUI.hbL) + (+modelMainUI.hbQ) + (+modelMainUI.hbS) +
+      (+modelMainUI.hbBarts) > 100.05) {
       <div
-  class="pointer-events-auto mx-auto mb-4 hidden w-96 max-w-full rounded-lg bg-warning-100 bg-clip-padding text-sm text-warning-700 shadow-lg shadow-black/5 data-[te-toast-show]:block data-[te-toast-hide]:hidden"
-  id="static-example"
-  role="alert"
-  aria-live="assertive"
-  aria-atomic="true"
-  data-te-autohide="false"
-  data-te-toast-init
-  data-te-toast-show>
-  <div
-    class="flex items-center justify-between rounded-t-lg border-b-2 border-warning-200 bg-warning-100 bg-clip-padding px-4 pb-2 pt-2.5 text-warning-700">
-    <p class="flex items-center font-bold text-warning-700">
-      <span class="mr-2 h-4 w-4">
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          viewBox="0 0 24 24"
-          fill="currentColor">
-          <path
-            fill-rule="evenodd"
-            d="M9.401 3.003c1.155-2 4.043-2 5.197 0l7.355 12.748c1.154 2-.29 4.5-2.599 4.5H4.645c-2.309 0-3.752-2.5-2.598-4.5L9.4 3.003zM12 8.25a.75.75 0 01.75.75v3.75a.75.75 0 01-1.5 0V9a.75.75 0 01.75-.75zm0 8.25a.75.75 0 100-1.5.75.75 0 000 1.5z"
-            clip-rule="evenodd" />
-        </svg>
-      </span>
-      Result Not Valid! Maximum Result will be 100.
-    </p>
-  </div>
-</div>
-    }
+        class="pointer-events-auto mx-auto mb-4 hidden w-96 max-w-full rounded-lg bg-warning-100 bg-clip-padding text-sm text-warning-700 shadow-lg shadow-black/5 data-[te-toast-show]:block data-[te-toast-hide]:hidden"
+        id="static-example"
+        role="alert"
+        aria-live="assertive"
+        aria-atomic="true"
+        data-te-autohide="false"
+        data-te-toast-init
+        data-te-toast-show
+      >
+        <div
+          class="flex items-center justify-between rounded-t-lg border-b-2 border-warning-200 bg-warning-100 bg-clip-padding px-4 pb-2 pt-2.5 text-warning-700"
+        >
+          <p class="flex items-center font-bold text-warning-700">
+            <span class="mr-2 h-4 w-4">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 24 24"
+                fill="currentColor"
+              >
+                <path
+                  fill-rule="evenodd"
+                  d="M9.401 3.003c1.155-2 4.043-2 5.197 0l7.355 12.748c1.154 2-.29 4.5-2.599 4.5H4.645c-2.309 0-3.752-2.5-2.598-4.5L9.4 3.003zM12 8.25a.75.75 0 01.75.75v3.75a.75.75 0 01-1.5 0V9a.75.75 0 01.75-.75zm0 8.25a.75.75 0 100-1.5.75.75 0 000 1.5z"
+                  clip-rule="evenodd"
+                />
+              </svg>
+            </span>
+            Result Not Valid! Maximum Result will be 100.
+          </p>
+        </div>
+      </div>
+      }
 
       <!-- Input Row 04 -->
-      <div class="w-full flex md:flex-row flex-col gap-2 md:gap-5 mb-2 md:mb-0 mt-2 md:mt-0">
+      <div
+        class="w-full flex md:flex-row flex-col gap-2 md:gap-5 mb-2 md:mb-0 mt-2 md:mt-0"
+      >
         <!-- comment -->
         <div class="w-full md:w-1/2">
           <div class="mb:mb-3 mb-1">
@@ -675,7 +791,10 @@
             >
               <option value="0">Select Comment</option>
               @for (item of comments; track item?.id) {
-              <option value="{{ item.code }}" [attr.selected]="modelMainUI.comCode == item.code ? true : null">
+              <option
+                value="{{ item.code }}"
+                [attr.selected]="modelMainUI.comCode == item.code ? true : null"
+              >
                 {{ item.code }}---{{ item.comments }}
               </option>
               }
@@ -699,7 +818,10 @@
             >
               <option value="0">Select Advice</option>
               @for (item of advices; track item?.id) {
-              <option value="{{ item.code }}" [attr.selected]="modelMainUI.advCode == item.code ? true : null">
+              <option
+                value="{{ item.code }}"
+                [attr.selected]="modelMainUI.advCode == item.code ? true : null"
+              >
                 {{ item.code }}---{{ item.advices }}
               </option>
               }
@@ -728,7 +850,7 @@
               +modelMainUI.hbS +
               +modelMainUI.hbC +
               +modelMainUI.hbBarts >
-              100.05
+            100.05
           "
           data-te-ripple-init
           data-te-ripple-color="light"
@@ -907,10 +1029,10 @@
                             {{ doctor?.code }}
                           </td>
                           @if (doctor?.name) {
-                            <td class="whitespace-nowrap px-6 py-1">
-                              {{ doctor.name.slice(0,30) }}
-                              @if (doctor.name.length > 30) {...}
-                            </td>
+                          <td class="whitespace-nowrap px-6 py-1">
+                            {{ doctor.name.slice(0, 30) }}
+                            @if (doctor.name.length > 30) {...}
+                          </td>
                           }
                           <td class="whitespace-nowrap px-6 py-1">
                             <button
@@ -1116,10 +1238,10 @@
                             {{ data?.code }}
                           </td>
                           @if (data?.comments) {
-                            <td class="whitespace-nowrap px-6 py-1">
-                              {{ data.comments.slice(0,30) }}
-                              @if (data.comments.length > 30) {...}
-                            </td>
+                          <td class="whitespace-nowrap px-6 py-1">
+                            {{ data.comments.slice(0, 30) }}
+                            @if (data.comments.length > 30) {...}
+                          </td>
                           }
                           <td class="whitespace-nowrap px-6 py-1">
                             <button
@@ -1326,10 +1448,10 @@
                             {{ data?.code }}
                           </td>
                           @if (data?.advices) {
-                            <td class="whitespace-nowrap px-6 py-1">
-                              {{ data.advices.slice(0,30) }}
-                              @if (data.advices.length > 30) {...}
-                            </td>
+                          <td class="whitespace-nowrap px-6 py-1">
+                            {{ data.advices.slice(0, 30) }}
+                            @if (data.advices.length > 30) {...}
+                          </td>
                           }
                           <td class="whitespace-nowrap px-6 py-1">
                             <button
@@ -1559,14 +1681,11 @@
                             {{ seal?.name }}
                           </td>
                           @if (seal?.degree) {
-                            <td class="whitespace-nowrap px-6 py-1">
-                              {{ seal.degree.slice(0,30) }}
-                              @if (seal.degree.length > 30) {...}
-                            </td>
-                          } @else {
-                            .
-                          }
-                          @if(seal?.position == "1"){
+                          <td class="whitespace-nowrap px-6 py-1">
+                            {{ seal.degree.slice(0, 30) }}
+                            @if (seal.degree.length > 30) {...}
+                          </td>
+                          } @else { . } @if(seal?.position == "1"){
                           <td class="whitespace-nowrap px-6 py-1 font-bold">
                             Left
                           </td>

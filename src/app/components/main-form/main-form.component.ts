@@ -7,6 +7,7 @@ import {
   OnInit,
   Renderer2,
   ViewChild,
+  inject,
 } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import {
@@ -44,6 +45,7 @@ import {
 } from '../../features/model/Advice.model';
 import { AdviceService } from '../../features/services/advice.service';
 import { AuthService } from '../../features/services/auth.service';
+import { DataService } from '../../features/services/data.service';
 
 @Component({
   selector: 'app-main-form',
@@ -53,6 +55,7 @@ import { AuthService } from '../../features/services/auth.service';
   styleUrl: './main-form.component.css',
 })
 export class MainFormComponent implements OnInit, OnDestroy, AfterViewInit  {
+  dataService = inject(DataService);
   parseFloat(arg0: number) {
     throw new Error('Method not implemented.');
   }
@@ -107,6 +110,7 @@ export class MainFormComponent implements OnInit, OnDestroy, AfterViewInit  {
   deleteAdviceSubscription?: Subscription;
   selectedIndex: number | null = null;
   companyID: any;
+  jsonData: any;
   @ViewChild('searchResults') searchResults: ElementRef | undefined;
   constructor(
     private mainUIService: MainUIService,
@@ -213,6 +217,10 @@ export class MainFormComponent implements OnInit, OnDestroy, AfterViewInit  {
   }
 
   ngOnInit() {
+    this.dataService.getJsonData().subscribe(data => {
+      this.jsonData = data.normalRange.find((data: { id: any; }) => data.id == this.companyID);
+      console.log(this.jsonData)
+    });
     // initTE(
     //   { Validation, Input, Datepicker, Select, Modal, Collapse, Toast },
     //   { allowReinits: true }

@@ -215,7 +215,7 @@
   ></div>
 </div>
 } @if (mainUI?.hb) {
-<p class="text-center font-bold">Hb Conc in % = {{ mainUI?.hb }} </p>
+<p class="text-center font-bold">Hb Conc in % = {{ mainUI?.hb }} @if (jsonData) {{{jsonData?.hb}}} </p>
 }
 
 <!-- Table -->
