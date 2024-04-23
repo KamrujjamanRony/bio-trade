@@ -241,6 +241,9 @@
               <td class="whitespace-nowrap px-6 font-bold">
                 {{ (+mainUI.hbBarts).toFixed(1) }}
               </td>
+              <td class="whitespace-nowrap px-6 py-1 font-medium">
+                @if (jsonData) {{{jsonData?.hbBarts}}} @else {}
+              </td>
             </tr>
             } @if (mainUI.hbF) {
             <tr
@@ -250,7 +253,9 @@
               <td class="whitespace-nowrap px-6 font-bold">
                 {{ (+mainUI.hbF).toFixed(1) }}
               </td>
-              <td class="whitespace-nowrap px-6 font-medium"><2</td>
+              <td class="whitespace-nowrap px-6 py-1 font-medium">
+                @if (jsonData) {{{jsonData?.hbF}}} @else {<2}
+              </td>
             </tr>
             } @if (mainUI.hbJ) {
             <tr
@@ -259,6 +264,9 @@
               <td class="whitespace-nowrap px-6 font-bold">Hb J</td>
               <td class="whitespace-nowrap px-6 font-bold">
                 {{ (+mainUI.hbJ).toFixed(1) }}
+              </td>
+              <td class="whitespace-nowrap px-6 py-1 font-medium">
+                @if (jsonData) {{{jsonData?.hbJ}}} @else {}
               </td>
             </tr>
             } @if (mainUI.hbA) {
@@ -269,7 +277,9 @@
               <td class="whitespace-nowrap px-6 font-bold">
                 {{ (+mainUI.hbA).toFixed(1) }}
               </td>
-              <td class="whitespace-nowrap px-6 font-medium">96.1-98.5</td>
+              <td class="whitespace-nowrap px-6 py-1 font-medium">
+                @if (jsonData) {{{jsonData?.hbA}}} @else {96.1-98.5}
+              </td>
             </tr>
             } @if (mainUI.hbL) {
             <tr
@@ -278,6 +288,9 @@
               <td class="whitespace-nowrap px-6 font-bold">Hb Lepore</td>
               <td class="whitespace-nowrap px-6 font-bold">
                 {{ (+mainUI.hbL).toFixed(1) }}
+              </td>
+              <td class="whitespace-nowrap px-6 py-1 font-medium">
+                @if (jsonData) {{{jsonData?.hbL}}} @else {}
               </td>
             </tr>
             } @if (mainUI.hbA2) {
@@ -290,7 +303,9 @@
               <td class="whitespace-nowrap px-6 font-bold">
                 {{ (+mainUI.hbA2).toFixed(1) }}
               </td>
-              <td class="whitespace-nowrap px-6 font-medium">2-3.5</td>
+              <td class="whitespace-nowrap px-6 py-1 font-medium">
+                @if (jsonData) {{{jsonData?.hbA2}}} @else {2-3.5}
+              </td>
             </tr>
             } @if (mainUI.hbE) {
             <tr
@@ -299,6 +314,9 @@
               <td class="whitespace-nowrap px-6 font-bold">Hb E</td>
               <td class="whitespace-nowrap px-6 font-bold">
                 {{ (+mainUI.hbE).toFixed(1) }}
+              </td>
+              <td class="whitespace-nowrap px-6 py-1 font-medium">
+                @if (jsonData) {{{jsonData?.hbE}}} @else {}
               </td>
             </tr>
             } @if (mainUI.hbD) {
@@ -309,6 +327,9 @@
               <td class="whitespace-nowrap px-6 font-bold">
                 {{ (+mainUI.hbD).toFixed(1) }}
               </td>
+              <td class="whitespace-nowrap px-6 py-1 font-medium">
+                @if (jsonData) {{{jsonData?.hbD}}} @else {}
+              </td>
             </tr>
             } @if (mainUI.hbS) {
             <tr
@@ -317,6 +338,9 @@
               <td class="whitespace-nowrap px-6 font-bold">Hb S</td>
               <td class="whitespace-nowrap px-6 font-bold">
                 {{ (+mainUI.hbS).toFixed(1) }}
+              </td>
+              <td class="whitespace-nowrap px-6 py-1 font-medium">
+                @if (jsonData) {{{jsonData?.hbS}}} @else {}
               </td>
             </tr>
             } 
@@ -328,6 +352,9 @@
               <td class="whitespace-nowrap px-6 font-bold">
                 {{ (+mainUI.hbC).toFixed(1) }}
               </td>
+                    <td class="whitespace-nowrap px-6 py-1 font-medium">
+                      @if (jsonData) {{{jsonData?.hbC}}} @else {}
+                    </td>
             </tr>
             } 
             @if (mainUI.hbQ) {
@@ -338,6 +365,9 @@
               <td class="whitespace-nowrap px-6 font-bold">
                 {{ (+mainUI.hbQ).toFixed(1) }}
               </td>
+                    <td class="whitespace-nowrap px-6 py-1 font-medium">
+                      @if (jsonData) {{{jsonData?.hbQ}}} @else {}
+                    </td>
             </tr>
             } -->
           </tbody>
