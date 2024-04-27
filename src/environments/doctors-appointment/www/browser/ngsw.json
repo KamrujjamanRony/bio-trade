@@ -1,0 +1,135 @@
+{
+  "configVersion": 1,
+  "timestamp": 1707984705032,
+  "index": "/index.html",
+  "assetGroups": [
+    {
+      "name": "app",
+      "installMode": "prefetch",
+      "updateMode": "prefetch",
+      "cacheQueryOptions": {
+        "ignoreVary": true
+      },
+      "urls": [
+        "/chunk-CTPHLABY.js",
+        "/chunk-GHS3B7U7.js",
+        "/favicon.ico",
+        "/index.html",
+        "/main-TMAGY4FU.js",
+        "/manifest.webmanifest",
+        "/polyfills-LZBJRJJE.js",
+        "/styles-DXOOFUPN.css"
+      ],
+      "patterns": []
+    },
+    {
+      "name": "assets",
+      "installMode": "lazy",
+      "updateMode": "prefetch",
+      "cacheQueryOptions": {
+        "ignoreVary": true
+      },
+      "urls": [
+        "/assets/banner-pattern.svg",
+        "/assets/data/doctors.json",
+        "/assets/icons/icon-128x128.png",
+        "/assets/icons/icon-144x144.png",
+        "/assets/icons/icon-152x152.png",
+        "/assets/icons/icon-192x192.png",
+        "/assets/icons/icon-384x384.png",
+        "/assets/icons/icon-512x512.png",
+        "/assets/icons/icon-72x72.png",
+        "/assets/icons/icon-96x96.png",
+        "/assets/images/Owener__Kalaroa.png",
+        "/assets/images/doctor.png",
+        "/assets/images/md-lalaroa.png",
+        "/assets/images/order-list.png",
+        "/assets/images/others/1.jpg",
+        "/assets/images/others/16.jpg",
+        "/assets/images/others/17.jpg",
+        "/assets/images/others/5.jpg",
+        "/assets/images/others/6.jpg",
+        "/assets/images/others/9.jpg",
+        "/assets/images/products/product01.jpg",
+        "/assets/images/products/product02.png",
+        "/assets/images/products/product03.jpg",
+        "/assets/images/products/product04.jpg",
+        "/assets/images/products/product05.jpg",
+        "/assets/images/products/product06.jpg",
+        "/assets/images/products/product07.jpg",
+        "/assets/images/service.png",
+        "/assets/images/slider/slide01.png",
+        "/assets/images/slider/slide02.png",
+        "/assets/images/slider/slide03.png",
+        "/assets/images/slider/slide04.png",
+        "/assets/koloroa-icon.png",
+        "/assets/mobile_app.png"
+      ],
+      "patterns": []
+    }
+  ],
+  "dataGroups": [],
+  "hashTable": {
+    "/assets/banner-pattern.svg": "35f7122d842eed360e0a0976d303cccec23657ee",
+    "/assets/data/doctors.json": "6303b23f37526163dd817e4cbcabc33a65956fee",
+    "/assets/icons/icon-128x128.png": "f912963bdc6d5a38d8f1dd0afbaab2ce8d657acb",
+    "/assets/icons/icon-144x144.png": "b155fd5f2fd5d2ea7760721063003c4cd95fd783",
+    "/assets/icons/icon-152x152.png": "eae6e0f0c8afb8aaae339e2a569b43e9238e5e6c",
+    "/assets/icons/icon-192x192.png": "15c4180454633880d98674aa7394656196c91584",
+    "/assets/icons/icon-384x384.png": "94a915751ef6c9282df9aea405ad679230631814",
+    "/assets/icons/icon-512x512.png": "1de182f76f7329dfa8f9fcdd1fdcdd695bea6a99",
+    "/assets/icons/icon-72x72.png": "aa88a6096bd973be7f6d7a5489bfa6bc2463f8c4",
+    "/assets/icons/icon-96x96.png": "7fb8f59c30ce2ff12c700321a0b39e14b3dc8f95",
+    "/assets/images/Owener__Kalaroa.png": "53b4bb773bd67202c26b3087e6778edb5463e062",
+    "/assets/images/doctor.png": "50006e8b30068006554b6be1a8176ea6dd53d0c1",
+    "/assets/images/md-lalaroa.png": "0b7724baf597a92f3cbad48e204ab70a989af220",
+    "/assets/images/order-list.png": "e099fa68f95f49dfc6bd4c1e21861a940bd1d2ba",
+    "/assets/images/others/1.jpg": "026509789c48d541d3c57df31c8e193b28fa23f6",
+    "/assets/images/others/16.jpg": "1058a9aecc3625e532f64a0f5f6dff3fe9549743",
+    "/assets/images/others/17.jpg": "312d4337857eabcd010f2e74ea57abe70e2302dd",
+    "/assets/images/others/5.jpg": "75c1b31f05768ed614739e28118fe2ae2c3551fa",
+    "/assets/images/others/6.jpg": "d8050faa3bdc41bd90100b26e9a9e4602bc2a9f5",
+    "/assets/images/others/9.jpg": "3d0bad81d31693a50d847daa10b005b81174d58f",
+    "/assets/images/products/product01.jpg": "7b988abfdb95dc5b6c3b6405a0696097c2299065",
+    "/assets/images/products/product02.png": "2120a9ef418c75ba68d708ee04bf2a58235e1e43",
+    "/assets/images/products/product03.jpg": "741a21a1c15ba51d660140ce8ae7abfa93494741",
+    "/assets/images/products/product04.jpg": "365472a32c0ebb640c3881b6c1679dad39b1c4ad",
+    "/assets/images/products/product05.jpg": "9892badde5d6aa9bfe91b7e00fed20f54db117ef",
+    "/assets/images/products/product06.jpg": "13caa04bce6d5f989c4461ae1a6dae04c20d85dd",
+    "/assets/images/products/product07.jpg": "3b5ad8fe151f71779e84148fe0c6570c732d5dd2",
+    "/assets/images/service.png": "ef12d916dd5258841e18ea83db299571c6d03788",
+    "/assets/images/slider/slide01.png": "c44cd68e02774d245700e87f92cf1de60120a45e",
+    "/assets/images/slider/slide02.png": "bd86024277c89fa504b994c2e943fb10c57f0bc8",
+    "/assets/images/slider/slide03.png": "1541a7c23d9b8236f08e7733c876b5b2c1a1d866",
+    "/assets/images/slider/slide04.png": "69ae67e597290a2f9f080e8d826036154503ed12",
+    "/assets/koloroa-icon.png": "950da2879a33298b336e108eb79c16adc62435c0",
+    "/assets/mobile_app.png": "e115e1279feb541ca0accf357e174fb708cc8f04",
+    "/chunk-CTPHLABY.js": "8ce78f37f4ab9e3ad0a4b7781aa3fb9a190f1219",
+    "/chunk-GHS3B7U7.js": "770718d9bcc1ea7aac488425b5dfcd44c9eed5c0",
+    "/favicon.ico": "d0757b6d82cee8da10d9336799bdabeaa9fb55b6",
+    "/index.html": "b3a83d8f0437edaba5d8211cb1bcfd303f918ba0",
+    "/main-TMAGY4FU.js": "8628891de4718f77b1a7790a81a06bf649868a9d",
+    "/manifest.webmanifest": "ef7128f90c41c58aed463a9f286c434d60a38034",
+    "/polyfills-LZBJRJJE.js": "fda1c82c5c620f1fa442f687b3df45a037f6fcc9",
+    "/styles-DXOOFUPN.css": "2a9a1222c3ab9647eb8c07a5f4b9a4feaa0a9cf7"
+  },
+  "navigationUrls": [
+    {
+      "positive": true,
+      "regex": "^\\/.*$"
+    },
+    {
+      "positive": false,
+      "regex": "^\\/(?:.+\\/)?[^/]*\\.[^/]*$"
+    },
+    {
+      "positive": false,
+      "regex": "^\\/(?:.+\\/)?[^/]*__[^/]*$"
+    },
+    {
+      "positive": false,
+      "regex": "^\\/(?:.+\\/)?[^/]*__[^/]*\\/.*$"
+    }
+  ],
+  "navigationRequestStrategy": "performance"
+}
