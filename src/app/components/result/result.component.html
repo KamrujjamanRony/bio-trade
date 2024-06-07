@@ -140,7 +140,9 @@
 </div>
 
 <!-- Heading -->
-<div class="bg-black p-[2px] rounded-md max-w-4xl mx-auto text-sm mt-5" [class.black-when-printing]="isPrinting">
+<div class="bg-black p-[2px] rounded-md max-w-4xl mx-auto text-sm mt-5" 
+[class.black-when-printing]="isPrinting"  
+>
   <div class="bg-white p-1 rounded-md shadow-md">
     <div class="flex md:flex-row flex-col justify-between" [class.flex-when-printing]="isPrinting">
       <div class="flex justify-between relative">
@@ -153,10 +155,39 @@
         </p>
         <p class="barCode pt-1">{{ mainUI?.pid }}</p>
       </div>
-      <p>
-        <span>Date &nbsp;&nbsp; : </span
-        ><span>{{ getCurrentDate() }}</span>
-      </p>
+      @if (mainUI?.cabin) {
+      <div class="flex justify-between relative">
+        <p class="mr-4">
+          <span
+            >Cabin No.
+            &nbsp;
+            : </span
+          >&nbsp;&nbsp; <span class="font-bold">{{ mainUI?.cabin }}</span>
+        </p>
+      </div>
+      }
+      @if (mainUI?.others3) {
+      <div class="flex justify-between relative">
+        <p class="mr-4">
+          <span
+            >Bed No.
+            &nbsp;
+            : </span
+          >&nbsp;&nbsp; <span class="font-bold">{{ mainUI?.others3 }}</span>
+        </p>
+      </div>
+      }
+      @if (mainUI?.others2) {
+        <p>
+          <span>Received Date &nbsp;&nbsp; :  &nbsp;&nbsp;</span
+          ><span>{{ transformDate(mainUI?.others2) }}</span>
+        </p>
+      } @else {
+        <p>
+          <span>Date &nbsp;&nbsp; :  &nbsp;&nbsp;</span
+          ><span>{{ getCurrentDate() }}</span>
+        </p>
+      }
     </div>
     <div class="flex md:flex-row flex-col justify-between" [class.flex-when-printing]="isPrinting">
       <p>
@@ -166,7 +197,7 @@
           : </span
         >&nbsp;&nbsp; <span>{{ mainUI?.name }}</span>
       </p>
-      <div class="flex md:flex-row flex-col justify-between w-48" [class.flex-when-printing]="isPrinting">
+      <div class="flex md:flex-row flex-col justify-between w-60" [class.flex-when-printing]="isPrinting">
         <p>
           <span>Age &nbsp;&nbsp;: </span><span>{{ mainUI?.age }}</span>
         </p>
@@ -183,7 +214,7 @@
         >&nbsp;&nbsp;&nbsp;
       </p>
       @if (refDoctor?.name) {
-        <p class="text-xs mt-1" [class.small-when-printing]="isPrinting">{{ refDoctor.name }}</p>
+        <p class="" [class.small-when-printing]="isPrinting">{{ refDoctor.name }}</p>
       }
     </div>
     <div class="flex md:flex-row flex-col justify-between" [class.flex-when-printing]="isPrinting">
@@ -191,24 +222,30 @@
         <span>Specimen &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; : </span
         >&nbsp;&nbsp; <span>Blood</span>
       </p>
-      <p hidden>
-        <span>Collected on &nbsp;&nbsp;: </span
+      @if (mainUI?.others2) {
+      <p>
+        <span>Delivery Date &nbsp;&nbsp; :  &nbsp;&nbsp;</span
         ><span>{{ transformDate(mainUI?.date) }}</span>
       </p>
+      }
     </div>
   </div>
 </div>
 
 <div class="max-w-5xl mx-auto text-center">
-  <h1 class="text-lg text-blue-800">
-    Estimation are carried out by fully Automated BIO-RAD D-10 (HPLC) System
+  <h1 class="text-sm text-blue-800 my-2">
+    {{ jsonData?.title }}
   </h1>
 </div>
 
 <!-- Chart -->
 @if (mainUI) {
 <div class="max-w-2xl mx-auto relative h-[300px]" [class.left-when-printing]="isPrinting">
-  <canvasjs-chart [options]="chartOptions"></canvasjs-chart>
+  @if (companyID == 7) {
+    <canvasjs-chart [options]="chartOptions7"></canvasjs-chart>
+  } @else {
+    <canvasjs-chart [options]="chartOptions"></canvasjs-chart>
+  }
   <div
     class="lg:w-48 md:w-32 w-32 h-5 bg-white absolute bottom-0 xl:right-[-2%] lg:right-0 right-0"
     [class.position-when-printing]="isPrinting"
@@ -254,7 +291,7 @@
                 {{ (+mainUI.hbF).toFixed(1) }}
               </td>
               <td class="whitespace-nowrap px-6 py-1 font-medium">
-                @if (jsonData) {{{jsonData?.hbF}}} @else {<2}
+                <2
               </td>
             </tr>
             } @if (mainUI.hbJ) {
@@ -266,7 +303,6 @@
                 {{ (+mainUI.hbJ).toFixed(1) }}
               </td>
               <td class="whitespace-nowrap px-6 py-1 font-medium">
-                @if (jsonData) {{{jsonData?.hbJ}}} @else {}
               </td>
             </tr>
             } @if (mainUI.hbA) {
@@ -278,7 +314,7 @@
                 {{ (+mainUI.hbA).toFixed(1) }}
               </td>
               <td class="whitespace-nowrap px-6 py-1 font-medium">
-                @if (jsonData) {{{jsonData?.hbA}}} @else {96.1-98.5}
+                96.1-98.5
               </td>
             </tr>
             } @if (mainUI.hbL) {
@@ -290,7 +326,6 @@
                 {{ (+mainUI.hbL).toFixed(1) }}
               </td>
               <td class="whitespace-nowrap px-6 py-1 font-medium">
-                @if (jsonData) {{{jsonData?.hbL}}} @else {}
               </td>
             </tr>
             } @if (mainUI.hbA2) {
@@ -304,7 +339,7 @@
                 {{ (+mainUI.hbA2).toFixed(1) }}
               </td>
               <td class="whitespace-nowrap px-6 py-1 font-medium">
-                @if (jsonData) {{{jsonData?.hbA2}}} @else {2-3.5}
+                2.2-4.0
               </td>
             </tr>
             } @if (mainUI.hbE) {
@@ -316,7 +351,6 @@
                 {{ (+mainUI.hbE).toFixed(1) }}
               </td>
               <td class="whitespace-nowrap px-6 py-1 font-medium">
-                @if (jsonData) {{{jsonData?.hbE}}} @else {}
               </td>
             </tr>
             } @if (mainUI.hbD) {
@@ -328,7 +362,6 @@
                 {{ (+mainUI.hbD).toFixed(1) }}
               </td>
               <td class="whitespace-nowrap px-6 py-1 font-medium">
-                @if (jsonData) {{{jsonData?.hbD}}} @else {}
               </td>
             </tr>
             } @if (mainUI.hbS) {
@@ -340,7 +373,6 @@
                 {{ (+mainUI.hbS).toFixed(1) }}
               </td>
               <td class="whitespace-nowrap px-6 py-1 font-medium">
-                @if (jsonData) {{{jsonData?.hbS}}} @else {}
               </td>
             </tr>
             } 

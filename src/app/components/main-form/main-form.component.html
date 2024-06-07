@@ -293,9 +293,61 @@
       }
       
      
+
       <!-- Input Row 01 -->
       <div class="w-full flex md:flex-row flex-col gap-2 md:gap-5 mb-2 md:mb-0">
-        <div class="w-full md:w-[30%]">
+
+        
+        <div
+          class="w-full relative mb-1 md:mb-3"
+          id="datepicker-disable-future"
+          data-te-format="yyyy-mm-dd"
+          data-te-datepicker-init
+          data-te-input-wrapper-init
+        >
+          <label
+            for="date"
+            class="absolute left-3 top-0 max-w-[90%] origin-[0_0] translate-y-[-0.7rem] scale-[0.8] text-primary bg-white px-2 z-10"
+            >Delivery Date
+          </label>
+          <input
+            autocomplete="off"
+            type="text"
+            class="block min-h-[auto] w-full rounded border-0 bg-transparent px-3 py-[0.32rem] leading-[1.6] outline-none relative"
+            placeholder="Select a date"
+            id="date"
+            name="date"
+            [(ngModel)]="modelMainUI.date"
+            (focus)="onOtherFocus()"
+          />
+        </div>
+        <div
+          class="w-full relative mb-1 md:mb-3"
+          id="datepicker-disable-future"
+          data-te-format="yyyy-mm-dd"
+          data-te-datepicker-init
+          data-te-input-wrapper-init
+        >
+          <label
+            for="others2"
+            class="absolute left-3 top-0 max-w-[90%] origin-[0_0] translate-y-[-0.7rem] scale-[0.8] text-primary bg-white px-2 z-10"
+            >Received Date
+          </label>
+          <input
+            autocomplete="off"
+            type="text"
+            class="block min-h-[auto] w-full rounded border-0 bg-transparent px-3 py-[0.32rem] leading-[1.6] outline-none relative"
+            placeholder="Select a date"
+            id="others2"
+            name="others2"
+            [(ngModel)]="modelMainUI.others2"
+          />
+        </div>
+      </div>
+
+      <!-- Input Row 02 -->
+      <div class="w-full flex md:flex-row flex-col gap-2 md:gap-5 mb-2 md:mb-0">
+        <div class="w-full">
           <div
             class="relative mb-1 md:mb-3 w-full"
             data-te-input-wrapper-init
@@ -350,32 +402,56 @@
             }
           </div>
         </div>
-        <div
-          class="w-full relative mb-1 md:mb-3"
-          id="datepicker-disable-future"
-          data-te-format="yyyy-mm-dd"
-          data-te-datepicker-init
-          data-te-input-wrapper-init
-        >
-          <label
-            for="date"
-            class="absolute left-3 top-0 max-w-[90%] origin-[0_0] translate-y-[-0.7rem] scale-[0.8] text-primary bg-white px-2 z-10"
-            >Date
-          </label>
-          <input
-            autocomplete="off"
-            type="text"
-            class="block min-h-[auto] w-full rounded border-0 bg-transparent px-3 py-[0.32rem] leading-[1.6] outline-none relative"
-            placeholder="Select a date"
-            id="date"
-            name="date"
-            [(ngModel)]="modelMainUI.date"
-            (focus)="onOtherFocus()"
-          />
+
+        <div class="w-full">
+          <div
+            class="relative mb-1 md:mb-3 w-full"
+            data-te-input-wrapper-init
+            data-te-validate="input"
+          >
+            <label
+              for="cabin"
+              class="absolute left-3 top-0 max-w-[90%] origin-[0_0] translate-y-[-0.7rem] scale-[0.8] text-primary bg-white px-2 z-10"
+              >Cabin No.
+            </label>
+            <input
+              autocomplete="off"
+              type="text"
+              class="block min-h-[auto] w-full rounded border-0 bg-transparent px-3 py-[0.32rem] leading-[1.6] outline-none relative"
+              id="cabin"
+              name="cabin"
+              placeholder="Cabin No."
+              required="true"
+              [(ngModel)]="modelMainUI.cabin"
+            />
+          </div>
+        </div>
+
+        <div class="w-full">
+          <div
+            class="relative mb-1 md:mb-3 w-full"
+            data-te-input-wrapper-init
+            data-te-validate="input"
+          >
+            <label
+              for="others3"
+              class="absolute left-3 top-0 max-w-[90%] origin-[0_0] translate-y-[-0.7rem] scale-[0.8] text-primary bg-white px-2 z-10"
+              >Bed No.
+            </label>
+            <input
+              autocomplete="off"
+              type="text"
+              class="block min-h-[auto] w-full rounded border-0 bg-transparent px-3 py-[0.32rem] leading-[1.6] outline-none relative"
+              id="others3"
+              name="others3"
+              placeholder="Bed No."
+              [(ngModel)]="modelMainUI.others3"
+            />
+          </div>
         </div>
       </div>
 
-      <!-- Input Row 02 -->
+      <!-- Input Row 03 -->
       <div class="w-full flex md:flex-row flex-col gap-2 md:gap-5 mb-2 md:mb-0">
         <div class="w-full md:w-[30%]">
           <div class="relative mb-1 md:mb-3 w-full" data-te-input-wrapper-init>
@@ -415,7 +491,7 @@
         </div>
       </div>
 
-      <!-- Input Row 03 -->
+      <!-- Input Row 04 -->
       <div class="w-full flex md:flex-row flex-col gap-2 md:gap-5 mb-2 md:mb-0">
         <div class="w-full md:w-[30%]">
           <div class="relative mb-1 md:mb-3 w-full">
@@ -513,7 +589,7 @@
                       />
                     </td>
                     <td class="whitespace-nowrap px-6 py-1 font-medium">
-                      @if (jsonData) {{{jsonData?.hbBarts}}} @else {}
+                      {{jsonData?.hbBarts}}
                     </td>
                   </tr>
                   <tr class="border-b border-primary-700 text-neutral-800">
@@ -530,7 +606,7 @@
                       />
                     </td>
                     <td class="whitespace-nowrap px-6 py-1 font-medium">
-                      @if (jsonData) {{{jsonData?.hbF}}} @else {<2}
+                      {{jsonData?.hbF}}
                     </td>
                   </tr>
                   <tr class="border-b border-primary-700 text-neutral-800">
@@ -547,7 +623,7 @@
                       />
                     </td>
                     <td class="whitespace-nowrap px-6 py-1 font-medium">
-                      @if (jsonData) {{{jsonData?.hbJ}}} @else {}
+                      {{jsonData?.hbJ}}
                     </td>
                   </tr>
                   <tr class="border-b border-primary-700 text-neutral-800">
@@ -564,7 +640,7 @@
                       />
                     </td>
                     <td class="whitespace-nowrap px-6 py-1 font-medium">
-                      @if (jsonData) {{{jsonData?.hbA}}} @else {96.1-98.5}
+                      {{jsonData?.hbA}}
                     </td>
                   </tr>
                   <tr class="border-b border-primary-700 text-neutral-800">
@@ -583,7 +659,7 @@
                       />
                     </td>
                     <td class="whitespace-nowrap px-6 py-1 font-medium">
-                      @if (jsonData) {{{jsonData?.hbL}}} @else {}
+                      {{jsonData?.hbL}}
                     </td>
                   </tr>
                   <tr class="border-b border-primary-700 text-neutral-800">
@@ -602,7 +678,7 @@
                       />
                     </td>
                     <td class="whitespace-nowrap px-6 py-1 font-medium">
-                      @if (jsonData) {{{jsonData?.hbA2}}} @else {2-3.5}
+                      {{jsonData?.hbA2}}
                     </td>
                   </tr>
                   <tr class="border-b border-primary-700 text-neutral-800">
@@ -619,7 +695,7 @@
                       />
                     </td>
                     <td class="whitespace-nowrap px-6 py-1 font-medium">
-                      @if (jsonData) {{{jsonData?.hbE}}} @else {}
+                      {{jsonData?.hbE}}
                     </td>
                   </tr>
                   <tr class="border-b border-primary-700 text-neutral-800">
@@ -636,7 +712,7 @@
                       />
                     </td>
                     <td class="whitespace-nowrap px-6 py-1 font-medium">
-                      @if (jsonData) {{{jsonData?.hbD}}} @else {}
+                      {{jsonData?.hbD}}
                     </td>
                   </tr>
                   <tr class="border-b border-primary-700 text-neutral-800">
@@ -653,7 +729,7 @@
                       />
                     </td>
                     <td class="whitespace-nowrap px-6 py-1 font-medium">
-                      @if (jsonData) {{{jsonData?.hbS}}} @else {}
+                      {{jsonData?.hbS}}
                     </td>
                   </tr>
                   <tr
@@ -673,7 +749,7 @@
                       />
                     </td>
                     <td class="whitespace-nowrap px-6 py-1 font-medium">
-                      @if (jsonData) {{{jsonData?.hbQ}}} @else {}
+                      {{jsonData?.hbQ}}
                     </td>
                   </tr>
                   <tr
@@ -692,7 +768,7 @@
                       />
                     </td>
                     <td class="whitespace-nowrap px-6 py-1 font-medium">
-                      @if (jsonData) {{{jsonData?.hbC}}} @else {}
+                      {{jsonData?.hbC}}
                     </td>
                   </tr>
                   <tr class="border-b border-primary-700 text-neutral-800">
@@ -707,6 +783,9 @@
                         (focus)="onOtherFocus()"
                         class="border-2 w-24 border-secondary-900"
                       />
+                    </td>
+                    <td class="whitespace-nowrap px-6 py-1 font-medium">
+                      {{jsonData?.hb}}
                     </td>
                   </tr>
                   <tr class="border-b border-primary-700 text-neutral-800">

@@ -53,6 +53,7 @@ export class ResultComponent implements OnInit, OnDestroy {
   addMarginSubscription?: Subscription;
   editMarginSubscription?: Subscription;
   chartOptions: any;
+  chartOptions7: any;
   date: any;
   currentDate?: string;
   companyID: any;
@@ -60,6 +61,7 @@ export class ResultComponent implements OnInit, OnDestroy {
   Company: any = '';
   loading: boolean = false;
   jsonData: any;
+  marginTop: any;
 
   constructor(
     private doctorService: DoctorService,
@@ -90,6 +92,7 @@ export class ResultComponent implements OnInit, OnDestroy {
           this.mainUIService.getMainUI(this.id).subscribe({
             next: (response) => {
               this.mainUI = response;
+              console.log(response)
               this.commentCode = response.comCode;
               this.adviceCode = response.advCode;
               this.refDoctorCode = response.refCode;
@@ -403,15 +406,255 @@ export class ResultComponent implements OnInit, OnDestroy {
       ],
     };
     // The chart ends
+    // The chart 7 start position
+    this.chartOptions7 = {
+      animationEnabled: true,
+      height: 300,
+      title: {
+        text: 'Haemoglobin Electrophoresis',
+        fontSize: 16,
+      },
+      axisY: {
+        title: 'Area',
+        gridColor: "lightGray",
+        maximum: 105,     
+        interval: 25,
+      },
+      axisX: {
+        title: 'Time',
+        interval: 40,
+        viewportMinimum: 0,
+        viewportMaximum: 370
+      },
+      toolTip: {
+        shared: true,
+      },
+      legend: {
+        fontSize: 9,
+      },
+      data: [
+        {
+          type: 'splineArea',
+          indexLabelFontSize: 9,
+          name: 'Hb Barts',
+          markerSize: 0,
+          color: 'rgba(134,180,2,.7)',
+          dataPoints: [
+            { x: -999999999, y: 0 },
+            { x: 0, y: 0 },
+            {
+              x: 15,
+              y: this.mainUI?.hbBarts,
+              indexLabel: "Hb Barts",
+              indexLabelFontColor: 'black', indexLabelFontWeight: "bolder", indexLabelMaxWidth: 45
+            },
+            { x: 30, y: 0 },
+            { x: 999999999, y: 0 },
+          ],
+        },
+        {
+          type: 'splineArea',
+          indexLabelFontSize: 9,
+          name: 'Hb F',
+          markerSize: 0,
+          color: 'rgba(34,180,112,.7)',
+          dataPoints: [
+            { x: -999999999, y: 0 },
+            { x: 35, y: 0 },
+            {
+              x: 50,
+              y: this.mainUI?.hbF,
+              indexLabel: "Hb F",
+              indexLabelFontColor: 'black', indexLabelFontWeight: "bolder", indexLabelMaxWidth: 35
+            },
+            { x: 65, y: 0 },
+            { x: 999999999, y: 0 },
+          ],
+        },
+        {
+          type: 'splineArea',
+          indexLabelFontSize: 9,
+          name: 'Hb J',
+          markerSize: 0,
+          color: 'rgba(241, 196, 15,.7)',
+          dataPoints: [
+            { x: -999999999, y: 0 },
+            { x: 125, y: 0 },
+            {
+              x: 140,
+              y: this.mainUI?.hbJ,
+              indexLabel: "Hb J",
+              indexLabelFontColor: 'black', indexLabelFontWeight: "bolder", indexLabelMaxWidth: 35
+            },
+            { x: 155, y: 0 },
+            { x: 999999999, y: 0 },
+          ],
+        },
+        {
+          type: 'splineArea',
+          indexLabelFontSize: 9,
+          name: 'hb A',
+          markerSize: 0,
+          color: 'rgba(154,18,133,.7)',
+          dataPoints: [
+            { x: -999999999, y: 0 },
+            { x: 155, y: 0 },
+            {
+              x: 170,
+              y: this.mainUI?.hbA,
+              indexLabel: "Hb A",
+              indexLabelFontColor: 'black',
+              indexLabelFontWeight: "bolder", indexLabelMaxWidth: 35
+            },
+            { x: 185, y: 0 },
+            { x: 999999999, y: 0 },
+          ],
+        },
+        {
+          type: 'splineArea',
+          indexLabelFontSize: 9,
+          name: 'hb Lepore',
+          markerSize: 0,
+          color: 'rgba(54,158,173,.7)',
+          dataPoints: [
+            { x: -999999999, y: 0 },
+            { x: 185, y: 0 },
+            {
+              x: 200,
+              y: this.mainUI?.hbL,
+              indexLabel: "Hb L",
+              indexLabelFontColor: 'black',
+              indexLabelFontWeight: "bolder", indexLabelMaxWidth: 35
+            },
+            { x: 215, y: 0 },
+            { x: 999999999, y: 0 },
+          ],
+        },
+        {
+          type: 'splineArea',
+          indexLabelFontSize: 9,
+          name: 'Hb E',
+          markerSize: 0,
+          color: 'rgba(22,170,16,.7)',
+          dataPoints: [
+            { x: -999999999, y: 0 },
+            { x: 225, y: 0 },
+            {
+              x: 240,
+              y: this.mainUI?.hbE,
+              indexLabel: "Hb E",
+              indexLabelFontColor: 'black', indexLabelFontWeight: "bolder", indexLabelMaxWidth: 35
+            },
+            { x: 255, y: 0 },
+            { x: 999999999, y: 0 },
+          ],
+        },
+        {
+          type: 'splineArea',
+          indexLabelFontSize: 9,
+          name: 'Hb A2',
+          markerSize: 0,
+          color: 'rgba(94,0,226,.7)',
+          dataPoints: [
+            { x: -999999999, y: 0 },
+            { x: 255, y: 0 },
+            {
+              x: 270,
+              y: this.mainUI?.hbA2,
+              indexLabel: "Hb A2",
+              indexLabelFontColor: 'black', indexLabelFontWeight: "bolder", indexLabelMaxWidth: 35
+            },
+            { x: 285, y: 0 },
+            { x: 999999999, y: 0 },
+          ],
+        },
+        {
+          type: 'splineArea',
+          indexLabelFontSize: 9,
+          name: 'Hb D',
+          markerSize: 0,
+          color: 'rgba(194,70,66,.7)',
+          dataPoints: [
+            { x: -999999999, y: 0 },
+            { x: 285, y: 0 },
+            {
+              x: 300,
+              y: this.mainUI?.hbD,
+              indexLabel: "Hb D",
+              indexLabelFontColor: 'black', indexLabelFontWeight: "bolder", indexLabelMaxWidth: 35
+            },
+            { x: 315, y: 0 },
+            { x: 999999999, y: 0 },
+          ],
+        },
+        {
+          type: 'splineArea',
+          indexLabelFontSize: 9,
+          name: 'hb S',
+          markerSize: 0,
+          color: 'rgba(103, 117, 213,.7)',
+          dataPoints: [
+
+            { x: -999999999, y: 0 },
+            { x: 315, y: 0 },
+            {
+              x: 330,
+              y: this.mainUI?.hbS,
+              indexLabel: "Hb S",
+              indexLabelFontColor: 'black', indexLabelFontWeight: "bolder", indexLabelMaxWidth: 35
+            },
+            { x: 345, y: 0 },
+            { x: 999999999, y: 0 },
+          ],
+        },
+        // {
+        //   type: 'splineArea',
+        //   indexLabelFontSize: 9,
+        //   name: 'hb C',
+        //   markerSize: 0,
+        //   color: 'rgba(103, 117, 213,.7)',
+        //   dataPoints: [
+        //     { x: -999999999, y: 0 },
+        //     { x: 320, y: 0 },
+        //     {
+        //       x: 330,
+        //       y: this.mainUI?.hbC,
+        //       indexLabel: "Hb C",
+        //       indexLabelFontColor: 'black',  indexLabelFontWeight: "bolder", indexLabelMaxWidth: 35
+        //     },
+        //     { x: 340, y: 0 },
+        //     { x: 999999999, y: 0 },
+        //   ],
+        // },
+        // {
+        //   type: 'splineArea',
+        //   indexLabelFontSize: 9,
+        //   name: 'hb Q',
+        //   markerSize: 0,
+        //   color: 'rgba(13, 217, 177,.7)',
+        //   dataPoints: [
+        //     { x: -999999999, y: 0 },
+        //     { x: 330, y: 0 },
+        //     {
+        //       x: 340,
+        //       y: this.mainUI?.hbQ,
+        //       indexLabel: "HbQ", ${this.mainUI?.hbQ})`,
+        //       indexLabelFontColor: 'black',  indexLabelFontWeight: "bolder", indexLabelMaxWidth: 35
+        //     },
+        //     { x: 350, y: 0 },
+        //     { x: 999999999, y: 0 },
+        //   ],
+        // },
+      ],
+    };
+    // The chart 7 ends
   }
 
   ngOnInit() {
     this.dataService.getJsonData().subscribe(data => {
-      this.jsonData = data.normalRange.find((data: { id: any; }) => data.id == this.companyID);
+      this.jsonData = data.data.find((d: { id: any; }) => d.id == this.companyID);
       console.log(this.jsonData)
     });
-    console.log(this.companyID);
-    console.log(this.jsonData);
     initTE({ Input, Select, Collapse }, { allowReinits: true });
   }
 

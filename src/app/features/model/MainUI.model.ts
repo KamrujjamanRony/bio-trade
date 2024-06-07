@@ -1,4 +1,5 @@
 export interface MainUIModel {
+  [x: string]: any;
   id: string;
   companyID: string;
   date: string;
@@ -25,6 +26,10 @@ export interface MainUIModel {
   hbS: string;
   hbC: string;
   hbBarts: string;
+  cabin: string;
+  others1: string;
+  others2: string;
+  others3: string;
   isMachineData: boolean;
 }
 
@@ -51,6 +56,10 @@ export interface AddMainUIRequest {
   hbS: string;
   hbC: string;
   hbBarts: string;
+  cabin: string;
+  others1: string;
+  others2: string;
+  others3: string;
   isMachineData: boolean;
 }
 
@@ -77,5 +86,9 @@ export interface UpdateMainUIRequest {
   hbS: string;
   hbC: string;
   hbBarts: string;
+  cabin: string;
+  others1: string;
+  others2: string;
+  others3: string;
   isMachineData: boolean;
 }

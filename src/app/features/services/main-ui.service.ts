@@ -1,7 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, map } from 'rxjs';
-import { AddMainUIRequest, MainUIModel, UpdateMainUIRequest } from '../model/MainUI.model';
 import { environment } from '../../../environments/environments';
 
 @Injectable({
@@ -11,28 +10,28 @@ export class MainUIService {
 
   constructor(private http: HttpClient) { }
 
-  addMainUI(model: AddMainUIRequest | FormData): Observable<void>{
+  addMainUI(model: any | FormData): Observable<void>{
     return this.http.post<void>(environment.MainUIApi, model)
   }
 
-  getAllMainUIs(): Observable<MainUIModel[]> {
-    return this.http.get<MainUIModel[]>(environment.MainUIApi);
+  getAllMainUIs(): Observable<any[]> {
+    return this.http.get<any[]>(environment.MainUIApi);
   }
 
-  getCompanyMainUIs(companyID: any): Observable<MainUIModel[]> {
-    return this.http.get<MainUIModel[]>(`${environment.MainUIApi}/GetCompanyId?filterOn=CompanyID&filterQuery=${companyID}`);
+  getCompanyMainUIs(companyID: any): Observable<any[]> {
+    return this.http.get<any[]>(`${environment.MainUIApi}/GetCompanyId?filterOn=CompanyID&filterQuery=${companyID}`);
   }
 
-  getMainUI(id: string): Observable<MainUIModel>{
-    return this.http.get<MainUIModel>(`${environment.MainUIApi}/GetMainUIById?id=${id}`);
+  getMainUI(id: string): Observable<any>{
+    return this.http.get<any>(`${environment.MainUIApi}/GetMainUIById?id=${id}`);
   }
 
-  updateMainUI(id: string, updateMainUIRequest: UpdateMainUIRequest | FormData): Observable<MainUIModel>{
-    return this.http.put<MainUIModel>(`${environment.MainUIApi}/EditMainUI/${id}`, updateMainUIRequest);
+  updateMainUI(id: string, updateMainUIRequest: any | FormData): Observable<any>{
+    return this.http.put<any>(`${environment.MainUIApi}/EditMainUI/${id}`, updateMainUIRequest);
   }
 
-  deleteMainUI(id: string): Observable<MainUIModel>{
-    return this.http.delete<MainUIModel>(`${environment.MainUIApi}/DeleteMainUI?id=${id}`);
+  deleteMainUI(id: string): Observable<any>{
+    return this.http.delete<any>(`${environment.MainUIApi}/DeleteMainUI?id=${id}`);
   }
 
   companyWiseTest( data: any | FormData ): Observable<any>{

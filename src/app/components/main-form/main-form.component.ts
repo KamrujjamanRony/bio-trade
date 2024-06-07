@@ -34,10 +34,6 @@ import {
   CommentModel,
 } from '../../features/model/Comment.model';
 import { CommentService } from '../../features/services/comment.service';
-import {
-  AddMainUIRequest,
-  MainUIModel,
-} from '../../features/model/MainUI.model';
 import { MainUIService } from '../../features/services/main-ui.service';
 import {
   AddAdviceRequest,
@@ -46,6 +42,7 @@ import {
 import { AdviceService } from '../../features/services/advice.service';
 import { AuthService } from '../../features/services/auth.service';
 import { DataService } from '../../features/services/data.service';
+import { environment } from '../../../environments/environments';
 
 @Component({
   selector: 'app-main-form',
@@ -73,8 +70,8 @@ export class MainFormComponent implements OnInit, OnDestroy, AfterViewInit  {
   editSealId!: string | undefined;
   mainUI: any[] = [];
   searchMainUI: any[] = [];
-  mainUI$?: Observable<MainUIModel[]>;
-  originalMainUI: MainUIModel[] = [];
+  mainUI$?: Observable<any[]>;
+  originalMainUI: any[] = [];
   doctors$?: Observable<DoctorModel[]>;
   originalDoctors: DoctorModel[] = [];
   doctors: DoctorModel[] = [];
@@ -218,8 +215,8 @@ export class MainFormComponent implements OnInit, OnDestroy, AfterViewInit  {
 
   ngOnInit() {
     this.dataService.getJsonData().subscribe(data => {
-      this.jsonData = data.normalRange.find((data: { id: any; }) => data.id == this.companyID);
-      console.log(this.jsonData)
+      this.jsonData = data.data.find((d: { id: any; }) => d.id == this.companyID);
+      console.log(this.jsonData);
     });
     // initTE(
     //   { Validation, Input, Datepicker, Select, Modal, Collapse, Toast },
@@ -368,6 +365,7 @@ export class MainFormComponent implements OnInit, OnDestroy, AfterViewInit  {
   onMainUIClick(id: string) {
     this.editMainUISubscription = this.mainUIService.getMainUI(id).subscribe({
       next: (response) => {
+        console.log(response)
         this.modelMainUI.companyID = response.companyID;
         this.modelMainUI.date = this.transformDate(response.date);
         this.modelMainUI.pid = response.pid;
@@ -390,6 +388,10 @@ export class MainFormComponent implements OnInit, OnDestroy, AfterViewInit  {
         this.modelMainUI.hbS = response.hbS;
         this.modelMainUI.hbC = response.hbC;
         this.modelMainUI.hbBarts = response.hbBarts;
+        this.modelMainUI.cabin = response.cabin;
+        this.modelMainUI.others1 = response.others1;
+        this.modelMainUI.others2 = response.others2;
+        this.modelMainUI.others3 = response.others3;
         this.modelMainUI.isMachineData = response.isMachineData;
         this.editMainUIId = id;
         this.searchMainUI = [];
@@ -425,6 +427,10 @@ export class MainFormComponent implements OnInit, OnDestroy, AfterViewInit  {
       addData.append('HbS', this.modelMainUI.hbS);
       addData.append('HbC', this.modelMainUI.hbC);
       addData.append('HbBarts', this.modelMainUI.hbBarts);
+      addData.append('Cabin', this.modelMainUI.cabin);
+      addData.append('Others1', this.modelMainUI.others1);
+      addData.append('Others2', this.modelMainUI.others2);
+      addData.append('Others3', this.modelMainUI.others3);
       addData.append('IsMachineData', this.modelMainUI.isMachineData);
       if (this.editMainUIId) {
         const editData = new FormData();
@@ -450,6 +456,10 @@ export class MainFormComponent implements OnInit, OnDestroy, AfterViewInit  {
         editData.append('HbS', this.modelMainUI.hbS || '');
         editData.append('HbC', this.modelMainUI.hbC || '');
         editData.append('HbBarts', this.modelMainUI.hbBarts || '');
+        editData.append('Cabin', this.modelMainUI.cabin || '');
+        editData.append('Others1', this.modelMainUI.others1 || '');
+        editData.append('Others2', this.modelMainUI.others2 || '');
+        editData.append('Others3', this.modelMainUI.others3 || '');
         editData.append('IsMachineData', this.modelMainUI.isMachineData || false);
         // Update MainUI by Id
         this.editMainUISubscription = this.mainUIService
@@ -532,6 +542,10 @@ export class MainFormComponent implements OnInit, OnDestroy, AfterViewInit  {
       hbS: '',
       hbC: '',
       hbBarts: '',
+      cabin: '',
+      others1: '',
+      others2: '',
+      others3: '',
       isMachineData: false,
     };
   }
