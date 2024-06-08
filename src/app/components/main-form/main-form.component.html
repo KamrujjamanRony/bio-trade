@@ -1,6 +1,6 @@
 <section>
   <!-- Patient form -->
-  <form (ngSubmit)="onFormSubmit()" #myForm="ngForm" data-te-validation-init>
+  <form (ngSubmit)="onFormSubmit()" #myForm="ngForm" (keydown.enter)="preventEnterSubmit($event)" data-te-validation-init>
     <!-- Navbar Start -->
     <div class="bg-primary-500">
       <div class="navbar max-w-5xl mx-auto" [class.hide-when-printing]="true">
@@ -223,729 +223,787 @@
     @if (loading) {
     <span class="loading loading-infinity loading-lg"></span>
     }
-    <div class="max-w-5xl mx-auto mt-5 px-2 md:px-5">
-      <!-- Show toast -->
-      @if (isFormValid) {
-      <div
-        class="pointer-events-auto mx-auto mb-4 hidden w-96 max-w-full rounded-lg bg-danger-100 bg-clip-padding text-sm text-danger-700 shadow-lg shadow-black/5 data-[te-toast-show]:block data-[te-toast-hide]:hidden"
-        id="static-example"
-        role="alert"
-        aria-live="assertive"
-        aria-atomic="true"
-        data-te-autohide="false"
-        data-te-toast-init
-        data-te-toast-show
-      >
+    <div class="grid grid-cols-4 gap-2 max-w-5xl mx-auto mt-5 px-2 md:px-5">
+      <div class="col-span-3">
+        <!-- Show toast -->
+        @if (isFormValid) {
         <div
-          class="flex items-center justify-between rounded-t-lg border-b-2 border-danger-200 bg-danger-100 bg-clip-padding px-4 pb-2 pt-2.5 text-danger-700"
+          class="pointer-events-auto mx-auto mb-4 hidden w-96 max-w-full rounded-lg bg-danger-100 bg-clip-padding text-sm text-danger-700 shadow-lg shadow-black/5 data-[te-toast-show]:block data-[te-toast-hide]:hidden"
+          id="static-example"
+          role="alert"
+          aria-live="assertive"
+          aria-atomic="true"
+          data-te-autohide="false"
+          data-te-toast-init
+          data-te-toast-show
         >
-          <p class="flex items-center font-bold text-danger-700">
-            <span class="mr-2 h-4 w-4">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                viewBox="0 0 24 24"
-                fill="currentColor"
-              >
-                <path
-                  fill-rule="evenodd"
-                  d="M12 2.25c-5.385 0-9.75 4.365-9.75 9.75s4.365 9.75 9.75 9.75 9.75-4.365 9.75-9.75S17.385 2.25 12 2.25zm-1.72 6.97a.75.75 0 10-1.06 1.06L10.94 12l-1.72 1.72a.75.75 0 101.06 1.06L12 13.06l1.72 1.72a.75.75 0 101.06-1.06L13.06 12l1.72-1.72a.75.75 0 10-1.06-1.06L12 10.94l-1.72-1.72z"
-                  clip-rule="evenodd"
-                />
-              </svg>
-            </span>
-            Form Invalid!
-          </p>
-          <div class="flex items-center">
-            <button
-              type="button"
-              (click)="toastClose()"
-              class="ml-2 box-content rounded-none border-none opacity-80 hover:no-underline hover:opacity-75 focus:opacity-100 focus:shadow-none focus:outline-none"
-              data-te-toast-dismiss
-              aria-label="Close"
-            >
-              <span
-                class="w-[1em] focus:opacity-100 disabled:pointer-events-none disabled:select-none disabled:opacity-25 [&.disabled]:pointer-events-none [&.disabled]:select-none [&.disabled]:opacity-25"
-              >
+          <div
+            class="flex items-center justify-between rounded-t-lg border-b-2 border-danger-200 bg-danger-100 bg-clip-padding px-4 pb-2 pt-2.5 text-danger-700"
+          >
+            <p class="flex items-center font-bold text-danger-700">
+              <span class="mr-2 h-4 w-4">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
-                  fill="none"
                   viewBox="0 0 24 24"
-                  stroke-width="1.5"
-                  stroke="currentColor"
-                  class="h-6 w-6"
+                  fill="currentColor"
                 >
                   <path
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    d="M6 18L18 6M6 6l12 12"
+                    fill-rule="evenodd"
+                    d="M12 2.25c-5.385 0-9.75 4.365-9.75 9.75s4.365 9.75 9.75 9.75 9.75-4.365 9.75-9.75S17.385 2.25 12 2.25zm-1.72 6.97a.75.75 0 10-1.06 1.06L10.94 12l-1.72 1.72a.75.75 0 101.06 1.06L12 13.06l1.72 1.72a.75.75 0 101.06-1.06L13.06 12l1.72-1.72a.75.75 0 10-1.06-1.06L12 10.94l-1.72-1.72z"
+                    clip-rule="evenodd"
                   />
                 </svg>
               </span>
-            </button>
-          </div>
-        </div>
-        <div
-          class="break-words rounded-b-lg bg-danger-100 px-4 py-4 text-danger-700"
-        >
-          Patient ID, Patient Name & Patient Age is Required.
-        </div>
-      </div>
-      }
-      
-     
-
-      <!-- Input Row 01 -->
-      <div class="w-full flex md:flex-row flex-col gap-2 md:gap-5 mb-2 md:mb-0">
-
-        
-        <div
-          class="w-full relative mb-1 md:mb-3"
-          id="datepicker-disable-future"
-          data-te-format="yyyy-mm-dd"
-          data-te-datepicker-init
-          data-te-input-wrapper-init
-        >
-          <label
-            for="date"
-            class="absolute left-3 top-0 max-w-[90%] origin-[0_0] translate-y-[-0.7rem] scale-[0.8] text-primary bg-white px-2 z-10"
-            >Delivery Date
-          </label>
-          <input
-            autocomplete="off"
-            type="text"
-            class="block min-h-[auto] w-full rounded border-0 bg-transparent px-3 py-[0.32rem] leading-[1.6] outline-none relative"
-            placeholder="Select a date"
-            id="date"
-            name="date"
-            [(ngModel)]="modelMainUI.date"
-            (focus)="onOtherFocus()"
-          />
-        </div>
-        <div
-          class="w-full relative mb-1 md:mb-3"
-          id="datepicker-disable-future"
-          data-te-format="yyyy-mm-dd"
-          data-te-datepicker-init
-          data-te-input-wrapper-init
-        >
-          <label
-            for="others2"
-            class="absolute left-3 top-0 max-w-[90%] origin-[0_0] translate-y-[-0.7rem] scale-[0.8] text-primary bg-white px-2 z-10"
-            >Received Date
-          </label>
-          <input
-            autocomplete="off"
-            type="text"
-            class="block min-h-[auto] w-full rounded border-0 bg-transparent px-3 py-[0.32rem] leading-[1.6] outline-none relative"
-            placeholder="Select a date"
-            id="others2"
-            name="others2"
-            [(ngModel)]="modelMainUI.others2"
-          />
-        </div>
-      </div>
-
-      <!-- Input Row 02 -->
-      <div class="w-full flex md:flex-row flex-col gap-2 md:gap-5 mb-2 md:mb-0">
-        <div class="w-full">
-          <div
-            class="relative mb-1 md:mb-3 w-full"
-            data-te-input-wrapper-init
-            data-te-validate="input"
-            id="patientData"
-            data-te-validation-ruleset="isRequired"
-          >
-            <label
-              for="pid"
-              class="absolute left-3 top-0 max-w-[90%] origin-[0_0] translate-y-[-0.7rem] scale-[0.8] text-primary bg-white px-2 z-10"
-              >Patient ID
-            </label>
-            <input
-              autocomplete="off"
-              type="text"
-              class="block min-h-[auto] w-full rounded border-0 bg-transparent px-3 py-[0.32rem] leading-[1.6] outline-none relative"
-              id="pid"
-              name="pid"
-              placeholder="Patient ID"
-              required="true"
-              [(ngModel)]="modelMainUI.pid"
-              (input)="onPIDSearch(modelMainUI.pid)"
-              #pidInput="ngModel"
-              tabindex="0"
-              (keydown)="handleKeyDown($event)"
-              (focus)="onInputFocus()"
-              minlength="2"
-            />
-            <!-- Display the matching patient names -->
-            @if (modelMainUI.pid.length > 0 && searchMainUI.length > 0 &&
-            isInputFocused) {
-            <div
-              #searchResults
-              class="search-results max-h-[60vh] w-96 overflow-y-auto rounded-md bg-gradient-to-l from-violet-300 to-fuchsia-300"
-            >
-              <ul>
-                @for (item of searchMainUI; track item?.id) {
-                <li
-                  [ngClass]="{
-                    'hover:bg-primary hover:text-white flex search-item': true,
-                    selected: item?.pid === qq
-                  }"
-                  (click)="onMainUIClick(item.id)"
+              Form Invalid!
+            </p>
+            <div class="flex items-center">
+              <button
+                type="button"
+                (click)="toastClose()"
+                class="ml-2 box-content rounded-none border-none opacity-80 hover:no-underline hover:opacity-75 focus:opacity-100 focus:shadow-none focus:outline-none"
+                data-te-toast-dismiss
+                aria-label="Close"
+              >
+                <span
+                  class="w-[1em] focus:opacity-100 disabled:pointer-events-none disabled:select-none disabled:opacity-25 [&.disabled]:pointer-events-none [&.disabled]:select-none [&.disabled]:opacity-25"
                 >
-                  <p class="px-3 hidden">{{ item?.id }}</p>
-                  <p class="px-3">{{ item?.pid }} &nbsp; &nbsp; &rarr;</p>
-                  <p class="px-3">{{ item?.name }}</p>
-                </li>
-                }
-              </ul>
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke-width="1.5"
+                    stroke="currentColor"
+                    class="h-6 w-6"
+                  >
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      d="M6 18L18 6M6 6l12 12"
+                    />
+                  </svg>
+                </span>
+              </button>
             </div>
-            }
+          </div>
+          <div
+            class="break-words rounded-b-lg bg-danger-100 px-4 py-4 text-danger-700"
+          >
+            Patient ID, Patient Name & Patient Age is Required.
           </div>
         </div>
-
-        <div class="w-full">
+        }
+        
+       
+  
+        <!-- Input Row 01 -->
+        <div class="w-full flex md:flex-row flex-col gap-2 md:gap-5 mb-2 md:mb-0">
+  
+          
           <div
-            class="relative mb-1 md:mb-3 w-full"
+            class="w-full relative mb-1 md:mb-3"
+            id="datepicker-disable-future"
+            data-te-format="yyyy-mm-dd"
+            data-te-datepicker-init
             data-te-input-wrapper-init
-            data-te-validate="input"
           >
             <label
-              for="cabin"
+              for="date"
               class="absolute left-3 top-0 max-w-[90%] origin-[0_0] translate-y-[-0.7rem] scale-[0.8] text-primary bg-white px-2 z-10"
-              >Cabin No.
+              >Delivery Date
             </label>
             <input
               autocomplete="off"
               type="text"
               class="block min-h-[auto] w-full rounded border-0 bg-transparent px-3 py-[0.32rem] leading-[1.6] outline-none relative"
-              id="cabin"
-              name="cabin"
-              placeholder="Cabin No."
-              required="true"
-              [(ngModel)]="modelMainUI.cabin"
+              placeholder="Select a date"
+              id="date"
+              name="date"
+              [(ngModel)]="modelMainUI.date"
+              (focus)="onOtherFocus()"
+              (input)="filterByDate()"
+              (change)="filterByDate()"
+              (keydown)="handleKeydown($event)"
             />
           </div>
-        </div>
-
-        <div class="w-full">
           <div
-            class="relative mb-1 md:mb-3 w-full"
+            class="w-full relative mb-1 md:mb-3"
+            id="datepicker-disable-future"
+            data-te-format="yyyy-mm-dd"
+            data-te-datepicker-init
             data-te-input-wrapper-init
-            data-te-validate="input"
           >
             <label
-              for="others3"
+              for="others2"
               class="absolute left-3 top-0 max-w-[90%] origin-[0_0] translate-y-[-0.7rem] scale-[0.8] text-primary bg-white px-2 z-10"
-              >Bed No.
+              >Received Date
             </label>
             <input
               autocomplete="off"
               type="text"
               class="block min-h-[auto] w-full rounded border-0 bg-transparent px-3 py-[0.32rem] leading-[1.6] outline-none relative"
-              id="others3"
-              name="others3"
-              placeholder="Bed No."
-              [(ngModel)]="modelMainUI.others3"
+              placeholder="Select a date"
+              id="others2"
+              name="others2"
+              [(ngModel)]="modelMainUI.others2"
+              (keydown)="handleKeydown($event)"
             />
           </div>
+          <div class="w-full">
+            <div
+              class="relative mb-1 md:mb-3 w-full"
+              data-te-input-wrapper-init
+              data-te-validate="input"
+            >
+              <label
+                for="others1"
+                class="absolute left-3 top-0 max-w-[90%] origin-[0_0] translate-y-[-0.7rem] scale-[0.8] text-primary bg-white px-2 z-10"
+                >Customer ID.
+              </label>
+              <input
+                autocomplete="off"
+                type="text"
+                class="block min-h-[auto] w-full rounded border-0 bg-transparent px-3 py-[0.32rem] leading-[1.6] outline-none relative"
+                id="others1"
+                name="others1"
+                placeholder="Customer ID."
+                required="true"
+                [(ngModel)]="modelMainUI.others1"
+                (keydown)="handleKeydown($event)"
+              />
+            </div>
+          </div>
         </div>
-      </div>
-
-      <!-- Input Row 03 -->
-      <div class="w-full flex md:flex-row flex-col gap-2 md:gap-5 mb-2 md:mb-0">
-        <div class="w-full md:w-[30%]">
+  
+        <!-- Input Row 02 -->
+        <div class="w-full flex md:flex-row flex-col gap-2 md:gap-5 mb-2 md:mb-0">
+          <div class="w-full">
+            <div
+              class="relative mb-1 md:mb-3 w-full"
+              data-te-input-wrapper-init
+              data-te-validate="input"
+              id="patientData"
+              data-te-validation-ruleset="isRequired"
+            >
+              <label
+                for="pid"
+                class="absolute left-3 top-0 max-w-[90%] origin-[0_0] translate-y-[-0.7rem] scale-[0.8] text-primary bg-white px-2 z-10"
+                >Patient ID
+              </label>
+              <input
+                autocomplete="off"
+                type="text"
+                class="block min-h-[auto] w-full rounded border-0 bg-transparent px-3 py-[0.32rem] leading-[1.6] outline-none relative"
+                id="pid"
+                name="pid"
+                placeholder="Patient ID"
+                required="true"
+                [(ngModel)]="modelMainUI.pid"
+                (input)="onPIDSearch(modelMainUI.pid)"
+                #pidInput="ngModel"
+                tabindex="0"
+                (keydown)="handleKey($event)"
+                (keydown)="handleKeydown($event)"
+                (focus)="onInputFocus()"
+                minlength="2"
+              />
+              <!-- Display the matching patient names -->
+              @if (modelMainUI.pid.length > 0 && searchMainUI.length > 0 &&
+              isInputFocused) {
+              <div
+                #searchResults
+                class="search-results max-h-[60vh] w-96 overflow-y-auto rounded-md bg-gradient-to-l from-violet-300 to-fuchsia-300"
+              >
+                <ul>
+                  @for (item of searchMainUI; track item?.id) {
+                  <li
+                    [ngClass]="{
+                      'hover:bg-primary hover:text-white flex search-item': true,
+                      selected: item?.pid === qq
+                    }"
+                    (click)="onMainUIClick(item.id)"
+                  >
+                    <p class="px-3 hidden">{{ item?.id }}</p>
+                    <p class="px-3">{{ item?.pid }} &nbsp; &nbsp; &rarr;</p>
+                    <p class="px-3">{{ item?.name }}</p>
+                  </li>
+                  }
+                </ul>
+              </div>
+              }
+            </div>
+          </div>
+  
+          <div class="w-full">
+            <div
+              class="relative mb-1 md:mb-3 w-full"
+              data-te-input-wrapper-init
+              data-te-validate="input"
+            >
+              <label
+                for="cabin"
+                class="absolute left-3 top-0 max-w-[90%] origin-[0_0] translate-y-[-0.7rem] scale-[0.8] text-primary bg-white px-2 z-10"
+                >Cabin No.
+              </label>
+              <input
+                autocomplete="off"
+                type="text"
+                class="block min-h-[auto] w-full rounded border-0 bg-transparent px-3 py-[0.32rem] leading-[1.6] outline-none relative"
+                id="cabin"
+                name="cabin"
+                placeholder="Cabin No."
+                required="true"
+                [(ngModel)]="modelMainUI.cabin"
+                (keydown)="handleKeydown($event)"
+              />
+            </div>
+          </div>
+  
+          <div class="w-full">
+            <div
+              class="relative mb-1 md:mb-3 w-full"
+              data-te-input-wrapper-init
+              data-te-validate="input"
+            >
+              <label
+                for="others3"
+                class="absolute left-3 top-0 max-w-[90%] origin-[0_0] translate-y-[-0.7rem] scale-[0.8] text-primary bg-white px-2 z-10"
+                >Bed No.
+              </label>
+              <input
+                autocomplete="off"
+                type="text"
+                class="block min-h-[auto] w-full rounded border-0 bg-transparent px-3 py-[0.32rem] leading-[1.6] outline-none relative"
+                id="others3"
+                name="others3"
+                placeholder="Bed No."
+                [(ngModel)]="modelMainUI.others3"
+                (keydown)="handleKeydown($event)"
+              />
+            </div>
+          </div>
+        </div>
+  
+        <!-- Input Row 03 -->
+        <div class="w-full flex md:flex-row flex-col gap-2 md:gap-5 mb-2 md:mb-0">
+          <div class="w-full md:w-[30%]">
+            <div class="relative mb-1 md:mb-3 w-full" data-te-input-wrapper-init>
+              <label
+                for="age"
+                class="absolute left-3 top-0 max-w-[90%] origin-[0_0] translate-y-[-0.7rem] scale-[0.8] text-primary bg-white px-2 z-10"
+                >Patient Age
+              </label>
+              <input
+                autocomplete="off"
+                type="text"
+                class="block min-h-[auto] w-full rounded border-0 bg-transparent px-3 py-[0.32rem] leading-[1.6] outline-none relative"
+                id="age"
+                name="age"
+                [(ngModel)]="modelMainUI.age"
+                (focus)="onOtherFocus()"
+                (keydown)="handleKeydown($event)"
+                placeholder="Patient Age"
+              />
+            </div>
+          </div>
           <div class="relative mb-1 md:mb-3 w-full" data-te-input-wrapper-init>
             <label
-              for="age"
+              for="name"
               class="absolute left-3 top-0 max-w-[90%] origin-[0_0] translate-y-[-0.7rem] scale-[0.8] text-primary bg-white px-2 z-10"
-              >Patient Age
+              >Patient Name
             </label>
             <input
               autocomplete="off"
               type="text"
               class="block min-h-[auto] w-full rounded border-0 bg-transparent px-3 py-[0.32rem] leading-[1.6] outline-none relative"
-              id="age"
-              name="age"
-              [(ngModel)]="modelMainUI.age"
+              id="name"
+              name="name"
+              [(ngModel)]="modelMainUI.name"
               (focus)="onOtherFocus()"
-              placeholder="Patient Age"
+              (keydown)="handleKeydown($event)"
+              placeholder="Patient Name"
             />
           </div>
         </div>
-        <div class="relative mb-1 md:mb-3 w-full" data-te-input-wrapper-init>
-          <label
-            for="name"
-            class="absolute left-3 top-0 max-w-[90%] origin-[0_0] translate-y-[-0.7rem] scale-[0.8] text-primary bg-white px-2 z-10"
-            >Patient Name
-          </label>
-          <input
-            autocomplete="off"
-            type="text"
-            class="block min-h-[auto] w-full rounded border-0 bg-transparent px-3 py-[0.32rem] leading-[1.6] outline-none relative"
-            id="name"
-            name="name"
-            [(ngModel)]="modelMainUI.name"
-            (focus)="onOtherFocus()"
-            placeholder="Patient Name"
-          />
-        </div>
-      </div>
-
-      <!-- Input Row 04 -->
-      <div class="w-full flex md:flex-row flex-col gap-2 md:gap-5 mb-2 md:mb-0">
-        <div class="w-full md:w-[30%]">
+  
+        <!-- Input Row 04 -->
+        <div class="w-full flex md:flex-row flex-col gap-2 md:gap-5 mb-2 md:mb-0">
+          <div class="w-full md:w-[30%]">
+            <div class="relative mb-1 md:mb-3 w-full">
+              <select
+                name="sex"
+                id="sex"
+                [(ngModel)]="modelMainUI.sex"
+                (focus)="onOtherFocus()"
+                (keydown)="handleKeydown($event)"
+                data-te-select-init
+              >
+                <option
+                  value="N/A"
+                  [attr.selected]="modelMainUI.sex === 'N/A' ? true : null"
+                >
+                  Select Sex
+                </option>
+                <option
+                  value="Male"
+                  [attr.selected]="modelMainUI.sex === 'Male' ? true : null"
+                >
+                  Male
+                </option>
+                <option
+                  value="Female"
+                  [attr.selected]="modelMainUI.sex === 'Female' ? true : null"
+                >
+                  Female
+                </option>
+                <option
+                  value="Others"
+                  [attr.selected]="modelMainUI.sex === 'Others' ? true : null"
+                >
+                  Others
+                </option>
+              </select>
+              <label data-te-select-label-ref for="sex" class="text-primary"
+                >Sex</label
+              >
+            </div>
+          </div>
           <div class="relative mb-1 md:mb-3 w-full">
             <select
-              name="sex"
-              id="sex"
-              [(ngModel)]="modelMainUI.sex"
+              id="refCode"
+              name="refCode"
+              [(ngModel)]="modelMainUI.refCode"
               (focus)="onOtherFocus()"
+              (keydown)="handleKeydown($event)"
               data-te-select-init
+              data-te-select-filter="true"
             >
+              <option value="0">Select a Doctor</option>
+              @for (item of doctors; track item?.id) {
               <option
-                value="N/A"
-                [attr.selected]="modelMainUI.sex === 'N/A' ? true : null"
+                value="{{ item.code }}"
+                [attr.selected]="modelMainUI.refCode == item.code ? true : null"
               >
-                Select Sex
+                {{ item.code }}---{{ item.name }}
               </option>
-              <option
-                value="Male"
-                [attr.selected]="modelMainUI.sex === 'Male' ? true : null"
-              >
-                Male
-              </option>
-              <option
-                value="Female"
-                [attr.selected]="modelMainUI.sex === 'Female' ? true : null"
-              >
-                Female
-              </option>
-              <option
-                value="Others"
-                [attr.selected]="modelMainUI.sex === 'Others' ? true : null"
-              >
-                Others
-              </option>
+              }
             </select>
-            <label data-te-select-label-ref for="sex" class="text-primary"
-              >Sex</label
+            <label for="refCode" data-te-select-label-ref class="text-primary"
+              >Refer Doctor</label
             >
           </div>
         </div>
-        <div class="relative mb-1 md:mb-3 w-full">
-          <select
-            id="refCode"
-            name="refCode"
-            [(ngModel)]="modelMainUI.refCode"
-            (focus)="onOtherFocus()"
-            data-te-select-init
-            data-te-select-filter="true"
-          >
-            <option value="0">Select a Doctor</option>
-            @for (item of doctors; track item?.id) {
-            <option
-              value="{{ item.code }}"
-              [attr.selected]="modelMainUI.refCode == item.code ? true : null"
-            >
-              {{ item.code }}---{{ item.name }}
-            </option>
-            }
-          </select>
-          <label for="refCode" data-te-select-label-ref class="text-primary"
-            >Refer Doctor</label
-          >
-        </div>
-      </div>
-
-      <!-- Result Table -->
-      <div class="flex flex-col">
-        <div class="overflow-x-auto sm:-mx-6 lg:-mx-8">
-          <div class="inline-block min-w-full py-1 sm:px-6 lg:px-8">
-            <div class="overflow-hidden">
-              <table class="min-w-full text-center text-sm font-light">
-                <thead
-                  class="border-b font-medium bg-slate-300 dark:border-neutral-500"
-                >
-                  <tr>
-                    <th scope="col" class="px-6 py-1">Name</th>
-                    <th scope="col" class="px-6 py-1">%</th>
-                    <th scope="col" class="px-6 py-1">Ref. Value</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr class="border-b border-primary-700 text-neutral-800">
-                    <td class="whitespace-nowrap px-6 py-1 font-bold">
-                      Hb Barts
-                    </td>
-                    <td class="whitespace-nowrap px-6 py-1 font-medium">
-                      <input
-                        autocomplete="off"
-                        type="number"
-                        id="hbBarts"
-                        name="hbBarts"
-                        [(ngModel)]="modelMainUI.hbBarts"
-                        (focus)="onOtherFocus()"
-                        class="border-2 w-24 border-secondary-900"
-                      />
-                    </td>
-                    <td class="whitespace-nowrap px-6 py-1 font-medium">
-                      {{jsonData?.hbBarts}}
-                    </td>
-                  </tr>
-                  <tr class="border-b border-primary-700 text-neutral-800">
-                    <td class="whitespace-nowrap px-6 py-1 font-bold">Hb F</td>
-                    <td class="whitespace-nowrap px-6 py-1 font-medium">
-                      <input
-                        autocomplete="off"
-                        type="number"
-                        id="hbF"
-                        name="hbF"
-                        [(ngModel)]="modelMainUI.hbF"
-                        (focus)="onOtherFocus()"
-                        class="border-2 w-24 border-secondary-900"
-                      />
-                    </td>
-                    <td class="whitespace-nowrap px-6 py-1 font-medium">
-                      {{jsonData?.hbF}}
-                    </td>
-                  </tr>
-                  <tr class="border-b border-primary-700 text-neutral-800">
-                    <td class="whitespace-nowrap px-6 py-1 font-bold">Hb J</td>
-                    <td class="whitespace-nowrap px-6 py-1 font-medium">
-                      <input
-                        autocomplete="off"
-                        type="number"
-                        id="hbJ"
-                        name="hbJ"
-                        [(ngModel)]="modelMainUI.hbJ"
-                        (focus)="onOtherFocus()"
-                        class="border-2 w-24 border-secondary-900"
-                      />
-                    </td>
-                    <td class="whitespace-nowrap px-6 py-1 font-medium">
-                      {{jsonData?.hbJ}}
-                    </td>
-                  </tr>
-                  <tr class="border-b border-primary-700 text-neutral-800">
-                    <td class="whitespace-nowrap px-6 py-1 font-bold">Hb A</td>
-                    <td class="whitespace-nowrap px-6 py-1 font-medium">
-                      <input
-                        autocomplete="off"
-                        type="number"
-                        id="hbA"
-                        name="hbA"
-                        [(ngModel)]="modelMainUI.hbA"
-                        (focus)="onOtherFocus()"
-                        class="border-2 w-24 border-secondary-900"
-                      />
-                    </td>
-                    <td class="whitespace-nowrap px-6 py-1 font-medium">
-                      {{jsonData?.hbA}}
-                    </td>
-                  </tr>
-                  <tr class="border-b border-primary-700 text-neutral-800">
-                    <td class="whitespace-nowrap px-6 py-1 font-bold">
-                      Hb Lepore
-                    </td>
-                    <td class="whitespace-nowrap px-6 py-1 font-medium">
-                      <input
-                        autocomplete="off"
-                        type="number"
-                        id="hbL"
-                        name="hbL"
-                        [(ngModel)]="modelMainUI.hbL"
-                        (focus)="onOtherFocus()"
-                        class="border-2 w-24 border-secondary-900"
-                      />
-                    </td>
-                    <td class="whitespace-nowrap px-6 py-1 font-medium">
-                      {{jsonData?.hbL}}
-                    </td>
-                  </tr>
-                  <tr class="border-b border-primary-700 text-neutral-800">
-                    <td class="whitespace-nowrap px-6 py-1 font-bold">
-                      Hb A<sub>2</sub>
-                    </td>
-                    <td class="whitespace-nowrap px-6 py-1 font-medium">
-                      <input
-                        autocomplete="off"
-                        type="number"
-                        id="hbA2"
-                        name="hbA2"
-                        [(ngModel)]="modelMainUI.hbA2"
-                        (focus)="onOtherFocus()"
-                        class="border-2 w-24 border-secondary-900"
-                      />
-                    </td>
-                    <td class="whitespace-nowrap px-6 py-1 font-medium">
-                      {{jsonData?.hbA2}}
-                    </td>
-                  </tr>
-                  <tr class="border-b border-primary-700 text-neutral-800">
-                    <td class="whitespace-nowrap px-6 py-1 font-bold">Hb E</td>
-                    <td class="whitespace-nowrap px-6 py-1 font-medium">
-                      <input
-                        autocomplete="off"
-                        type="number"
-                        id="hbE"
-                        name="hbE"
-                        [(ngModel)]="modelMainUI.hbE"
-                        (focus)="onOtherFocus()"
-                        class="border-2 w-24 border-secondary-900"
-                      />
-                    </td>
-                    <td class="whitespace-nowrap px-6 py-1 font-medium">
-                      {{jsonData?.hbE}}
-                    </td>
-                  </tr>
-                  <tr class="border-b border-primary-700 text-neutral-800">
-                    <td class="whitespace-nowrap px-6 py-1 font-bold">Hb D</td>
-                    <td class="whitespace-nowrap px-6 py-1 font-medium">
-                      <input
-                        autocomplete="off"
-                        type="number"
-                        id="hbD"
-                        name="hbD"
-                        [(ngModel)]="modelMainUI.hbD"
-                        (focus)="onOtherFocus()"
-                        class="border-2 w-24 border-secondary-900"
-                      />
-                    </td>
-                    <td class="whitespace-nowrap px-6 py-1 font-medium">
-                      {{jsonData?.hbD}}
-                    </td>
-                  </tr>
-                  <tr class="border-b border-primary-700 text-neutral-800">
-                    <td class="whitespace-nowrap px-6 py-1 font-bold">Hb S</td>
-                    <td class="whitespace-nowrap px-6 py-1 font-medium">
-                      <input
-                        autocomplete="off"
-                        type="number"
-                        id="hbS"
-                        name="hbS"
-                        [(ngModel)]="modelMainUI.hbS"
-                        (focus)="onOtherFocus()"
-                        class="border-2 w-24 border-secondary-900"
-                      />
-                    </td>
-                    <td class="whitespace-nowrap px-6 py-1 font-medium">
-                      {{jsonData?.hbS}}
-                    </td>
-                  </tr>
-                  <tr
-                    class="border-b border-primary-700 text-neutral-800"
-                    hidden
+  
+        <!-- Result Table -->
+        <div class="flex flex-col">
+          <div class="overflow-x-auto sm:-mx-6 lg:-mx-8">
+            <div class="inline-block min-w-full py-1 sm:px-6 lg:px-8">
+              <div class="overflow-hidden">
+                <table class="min-w-full text-center text-sm font-light">
+                  <thead
+                    class="border-b font-medium bg-slate-300 dark:border-neutral-500"
                   >
-                    <td class="whitespace-nowrap px-6 py-1 font-bold">Hb Q</td>
-                    <td class="whitespace-nowrap px-6 py-1 font-medium">
-                      <input
-                        autocomplete="off"
-                        type="number"
-                        id="hbQ"
-                        name="hbQ"
-                        [(ngModel)]="modelMainUI.hbQ"
-                        (focus)="onOtherFocus()"
-                        class="border-2 w-24 border-secondary-900"
-                      />
-                    </td>
-                    <td class="whitespace-nowrap px-6 py-1 font-medium">
-                      {{jsonData?.hbQ}}
-                    </td>
-                  </tr>
-                  <tr
-                    class="border-b border-primary-700 text-neutral-800 hidden"
-                  >
-                    <td class="whitespace-nowrap px-6 py-1 font-bold">Hb C</td>
-                    <td class="whitespace-nowrap px-6 py-1 font-medium">
-                      <input
-                        autocomplete="off"
-                        type="number"
-                        id="hbC"
-                        name="hbC"
-                        [(ngModel)]="modelMainUI.hbC"
-                        (focus)="onOtherFocus()"
-                        class="border-2 w-24 border-secondary-900"
-                      />
-                    </td>
-                    <td class="whitespace-nowrap px-6 py-1 font-medium">
-                      {{jsonData?.hbC}}
-                    </td>
-                  </tr>
-                  <tr class="border-b border-primary-700 text-neutral-800">
-                    <td class="whitespace-nowrap px-6 py-1 font-bold">Hb</td>
-                    <td class="whitespace-nowrap px-6 py-1 font-medium">
-                      <input
-                        autocomplete="off"
-                        type="number"
-                        id="hb"
-                        name="hb"
-                        [(ngModel)]="modelMainUI.hb"
-                        (focus)="onOtherFocus()"
-                        class="border-2 w-24 border-secondary-900"
-                      />
-                    </td>
-                    <td class="whitespace-nowrap px-6 py-1 font-medium">
-                      {{jsonData?.hb}}
-                    </td>
-                  </tr>
-                  <tr class="border-b border-primary-700 text-neutral-800">
-                    <td class="whitespace-nowrap px-6 py-1 font-bold"></td>
-                    <td class="whitespace-nowrap px-6 py-1 font-medium">
-                      Total =
-                      {{
-                        (
-                          +modelMainUI.hbA +
-                          +modelMainUI.hbF +
-                          +modelMainUI.hbD +
-                          +modelMainUI.hbE +
-                          +modelMainUI.hbA2 +
-                          +modelMainUI.hbJ +
-                          +modelMainUI.hbL +
-                          +modelMainUI.hbQ +
-                          +modelMainUI.hbS +
-                          +modelMainUI.hbBarts
-                        ).toFixed(1)
-                      }}
-                    </td>
-                  </tr>
-                </tbody>
-              </table>
+                    <tr>
+                      <th scope="col" class="px-6 py-1">Name</th>
+                      <th scope="col" class="px-6 py-1">%</th>
+                      <th scope="col" class="px-6 py-1">Ref. Value</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr class="border-b border-primary-700 text-neutral-800">
+                      <td class="whitespace-nowrap px-6 py-1 font-bold">
+                        Hb Barts
+                      </td>
+                      <td class="whitespace-nowrap px-6 py-1 font-medium">
+                        <input
+                          autocomplete="off"
+                          type="number"
+                          id="hbBarts"
+                          name="hbBarts"
+                          [(ngModel)]="modelMainUI.hbBarts"
+                          (focus)="onOtherFocus()"
+                          class="border-2 w-24 border-secondary-900"
+                        />
+                      </td>
+                      <td class="whitespace-nowrap px-6 py-1 font-medium">
+                        {{jsonData?.hbBarts}}
+                      </td>
+                    </tr>
+                    <tr class="border-b border-primary-700 text-neutral-800">
+                      <td class="whitespace-nowrap px-6 py-1 font-bold">Hb F</td>
+                      <td class="whitespace-nowrap px-6 py-1 font-medium">
+                        <input
+                          autocomplete="off"
+                          type="number"
+                          id="hbF"
+                          name="hbF"
+                          [(ngModel)]="modelMainUI.hbF"
+                          (focus)="onOtherFocus()"
+                          class="border-2 w-24 border-secondary-900"
+                        />
+                      </td>
+                      <td class="whitespace-nowrap px-6 py-1 font-medium">
+                        {{jsonData?.hbF}}
+                      </td>
+                    </tr>
+                    <tr class="border-b border-primary-700 text-neutral-800">
+                      <td class="whitespace-nowrap px-6 py-1 font-bold">Hb J</td>
+                      <td class="whitespace-nowrap px-6 py-1 font-medium">
+                        <input
+                          autocomplete="off"
+                          type="number"
+                          id="hbJ"
+                          name="hbJ"
+                          [(ngModel)]="modelMainUI.hbJ"
+                          (focus)="onOtherFocus()"
+                          class="border-2 w-24 border-secondary-900"
+                        />
+                      </td>
+                      <td class="whitespace-nowrap px-6 py-1 font-medium">
+                        {{jsonData?.hbJ}}
+                      </td>
+                    </tr>
+                    <tr class="border-b border-primary-700 text-neutral-800">
+                      <td class="whitespace-nowrap px-6 py-1 font-bold">Hb A</td>
+                      <td class="whitespace-nowrap px-6 py-1 font-medium">
+                        <input
+                          autocomplete="off"
+                          type="number"
+                          id="hbA"
+                          name="hbA"
+                          [(ngModel)]="modelMainUI.hbA"
+                          (focus)="onOtherFocus()"
+                          class="border-2 w-24 border-secondary-900"
+                        />
+                      </td>
+                      <td class="whitespace-nowrap px-6 py-1 font-medium">
+                        {{jsonData?.hbA}}
+                      </td>
+                    </tr>
+                    <tr class="border-b border-primary-700 text-neutral-800">
+                      <td class="whitespace-nowrap px-6 py-1 font-bold">
+                        Hb Lepore
+                      </td>
+                      <td class="whitespace-nowrap px-6 py-1 font-medium">
+                        <input
+                          autocomplete="off"
+                          type="number"
+                          id="hbL"
+                          name="hbL"
+                          [(ngModel)]="modelMainUI.hbL"
+                          (focus)="onOtherFocus()"
+                          class="border-2 w-24 border-secondary-900"
+                        />
+                      </td>
+                      <td class="whitespace-nowrap px-6 py-1 font-medium">
+                        {{jsonData?.hbL}}
+                      </td>
+                    </tr>
+                    <tr class="border-b border-primary-700 text-neutral-800">
+                      <td class="whitespace-nowrap px-6 py-1 font-bold">
+                        Hb A<sub>2</sub>
+                      </td>
+                      <td class="whitespace-nowrap px-6 py-1 font-medium">
+                        <input
+                          autocomplete="off"
+                          type="number"
+                          id="hbA2"
+                          name="hbA2"
+                          [(ngModel)]="modelMainUI.hbA2"
+                          (focus)="onOtherFocus()"
+                          class="border-2 w-24 border-secondary-900"
+                        />
+                      </td>
+                      <td class="whitespace-nowrap px-6 py-1 font-medium">
+                        {{jsonData?.hbA2}}
+                      </td>
+                    </tr>
+                    <tr class="border-b border-primary-700 text-neutral-800">
+                      <td class="whitespace-nowrap px-6 py-1 font-bold">Hb E</td>
+                      <td class="whitespace-nowrap px-6 py-1 font-medium">
+                        <input
+                          autocomplete="off"
+                          type="number"
+                          id="hbE"
+                          name="hbE"
+                          [(ngModel)]="modelMainUI.hbE"
+                          (focus)="onOtherFocus()"
+                          class="border-2 w-24 border-secondary-900"
+                        />
+                      </td>
+                      <td class="whitespace-nowrap px-6 py-1 font-medium">
+                        {{jsonData?.hbE}}
+                      </td>
+                    </tr>
+                    <tr class="border-b border-primary-700 text-neutral-800">
+                      <td class="whitespace-nowrap px-6 py-1 font-bold">Hb D</td>
+                      <td class="whitespace-nowrap px-6 py-1 font-medium">
+                        <input
+                          autocomplete="off"
+                          type="number"
+                          id="hbD"
+                          name="hbD"
+                          [(ngModel)]="modelMainUI.hbD"
+                          (focus)="onOtherFocus()"
+                          class="border-2 w-24 border-secondary-900"
+                        />
+                      </td>
+                      <td class="whitespace-nowrap px-6 py-1 font-medium">
+                        {{jsonData?.hbD}}
+                      </td>
+                    </tr>
+                    <tr class="border-b border-primary-700 text-neutral-800">
+                      <td class="whitespace-nowrap px-6 py-1 font-bold">Hb S</td>
+                      <td class="whitespace-nowrap px-6 py-1 font-medium">
+                        <input
+                          autocomplete="off"
+                          type="number"
+                          id="hbS"
+                          name="hbS"
+                          [(ngModel)]="modelMainUI.hbS"
+                          (focus)="onOtherFocus()"
+                          class="border-2 w-24 border-secondary-900"
+                        />
+                      </td>
+                      <td class="whitespace-nowrap px-6 py-1 font-medium">
+                        {{jsonData?.hbS}}
+                      </td>
+                    </tr>
+                    <tr
+                      class="border-b border-primary-700 text-neutral-800"
+                      hidden
+                    >
+                      <td class="whitespace-nowrap px-6 py-1 font-bold">Hb Q</td>
+                      <td class="whitespace-nowrap px-6 py-1 font-medium">
+                        <input
+                          autocomplete="off"
+                          type="number"
+                          id="hbQ"
+                          name="hbQ"
+                          [(ngModel)]="modelMainUI.hbQ"
+                          (focus)="onOtherFocus()"
+                          class="border-2 w-24 border-secondary-900"
+                        />
+                      </td>
+                      <td class="whitespace-nowrap px-6 py-1 font-medium">
+                        {{jsonData?.hbQ}}
+                      </td>
+                    </tr>
+                    <tr
+                      class="border-b border-primary-700 text-neutral-800 hidden"
+                    >
+                      <td class="whitespace-nowrap px-6 py-1 font-bold">Hb C</td>
+                      <td class="whitespace-nowrap px-6 py-1 font-medium">
+                        <input
+                          autocomplete="off"
+                          type="number"
+                          id="hbC"
+                          name="hbC"
+                          [(ngModel)]="modelMainUI.hbC"
+                          (focus)="onOtherFocus()"
+                          class="border-2 w-24 border-secondary-900"
+                        />
+                      </td>
+                      <td class="whitespace-nowrap px-6 py-1 font-medium">
+                        {{jsonData?.hbC}}
+                      </td>
+                    </tr>
+                    <tr class="border-b border-primary-700 text-neutral-800">
+                      <td class="whitespace-nowrap px-6 py-1 font-bold">Hb</td>
+                      <td class="whitespace-nowrap px-6 py-1 font-medium">
+                        <input
+                          autocomplete="off"
+                          type="number"
+                          id="hb"
+                          name="hb"
+                          [(ngModel)]="modelMainUI.hb"
+                          (focus)="onOtherFocus()"
+                          class="border-2 w-24 border-secondary-900"
+                        />
+                      </td>
+                      <td class="whitespace-nowrap px-6 py-1 font-medium">
+                        {{jsonData?.hb}}
+                      </td>
+                    </tr>
+                    <tr class="border-b border-primary-700 text-neutral-800">
+                      <td class="whitespace-nowrap px-6 py-1 font-bold"></td>
+                      <td class="whitespace-nowrap px-6 py-1 font-medium">
+                        Total =
+                        {{
+                          (
+                            +modelMainUI.hbA +
+                            +modelMainUI.hbF +
+                            +modelMainUI.hbD +
+                            +modelMainUI.hbE +
+                            +modelMainUI.hbA2 +
+                            +modelMainUI.hbJ +
+                            +modelMainUI.hbL +
+                            +modelMainUI.hbQ +
+                            +modelMainUI.hbS +
+                            +modelMainUI.hbBarts
+                          ).toFixed(1)
+                        }}
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
             </div>
           </div>
         </div>
-      </div>
-
-      <!-- Show toast -->
-      @if ((+modelMainUI.hbA) + (+modelMainUI.hbF) + (+modelMainUI.hbD) +
-      (+modelMainUI.hbE) + (+modelMainUI.hbA2) + (+modelMainUI.hbJ) +
-      (+modelMainUI.hbL) + (+modelMainUI.hbQ) + (+modelMainUI.hbS) +
-      (+modelMainUI.hbBarts) > 100.05) {
-      <div
-        class="pointer-events-auto mx-auto mb-4 hidden w-96 max-w-full rounded-lg bg-warning-100 bg-clip-padding text-sm text-warning-700 shadow-lg shadow-black/5 data-[te-toast-show]:block data-[te-toast-hide]:hidden"
-        id="static-example"
-        role="alert"
-        aria-live="assertive"
-        aria-atomic="true"
-        data-te-autohide="false"
-        data-te-toast-init
-        data-te-toast-show
-      >
+  
+        <!-- Show toast -->
+        @if ((+modelMainUI.hbA) + (+modelMainUI.hbF) + (+modelMainUI.hbD) +
+        (+modelMainUI.hbE) + (+modelMainUI.hbA2) + (+modelMainUI.hbJ) +
+        (+modelMainUI.hbL) + (+modelMainUI.hbQ) + (+modelMainUI.hbS) +
+        (+modelMainUI.hbBarts) > 100.05) {
         <div
-          class="flex items-center justify-between rounded-t-lg border-b-2 border-warning-200 bg-warning-100 bg-clip-padding px-4 pb-2 pt-2.5 text-warning-700"
+          class="pointer-events-auto mx-auto mb-4 hidden w-96 max-w-full rounded-lg bg-warning-100 bg-clip-padding text-sm text-warning-700 shadow-lg shadow-black/5 data-[te-toast-show]:block data-[te-toast-hide]:hidden"
+          id="static-example"
+          role="alert"
+          aria-live="assertive"
+          aria-atomic="true"
+          data-te-autohide="false"
+          data-te-toast-init
+          data-te-toast-show
         >
-          <p class="flex items-center font-bold text-warning-700">
-            <span class="mr-2 h-4 w-4">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                viewBox="0 0 24 24"
-                fill="currentColor"
-              >
-                <path
-                  fill-rule="evenodd"
-                  d="M9.401 3.003c1.155-2 4.043-2 5.197 0l7.355 12.748c1.154 2-.29 4.5-2.599 4.5H4.645c-2.309 0-3.752-2.5-2.598-4.5L9.4 3.003zM12 8.25a.75.75 0 01.75.75v3.75a.75.75 0 01-1.5 0V9a.75.75 0 01.75-.75zm0 8.25a.75.75 0 100-1.5.75.75 0 000 1.5z"
-                  clip-rule="evenodd"
-                />
-              </svg>
-            </span>
-            Result Not Valid! Maximum Result will be 100.
-          </p>
-        </div>
-      </div>
-      }
-
-      <!-- Input Row 04 -->
-      <div
-        class="w-full flex md:flex-row flex-col gap-2 md:gap-5 mb-2 md:mb-0 mt-2 md:mt-0"
-      >
-        <!-- comment -->
-        <div class="w-full md:w-1/2">
-          <div class="mb:mb-3 mb-1">
-            <select
-              id="comment"
-              name="comment"
-              [(ngModel)]="modelMainUI.comCode"
-              (focus)="onOtherFocus()"
-              data-te-select-init
-              data-te-select-filter="true"
-            >
-              <option value="0">Select Comment</option>
-              @for (item of comments; track item?.id) {
-              <option
-                value="{{ item.code }}"
-                [attr.selected]="modelMainUI.comCode == item.code ? true : null"
-              >
-                {{ item.code }}---{{ item.comments }}
-              </option>
-              }
-            </select>
-            <label for="comment" data-te-select-label-ref class="text-primary"
-              >Comment</label
-            >
+          <div
+            class="flex items-center justify-between rounded-t-lg border-b-2 border-warning-200 bg-warning-100 bg-clip-padding px-4 pb-2 pt-2.5 text-warning-700"
+          >
+            <p class="flex items-center font-bold text-warning-700">
+              <span class="mr-2 h-4 w-4">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 0 24 24"
+                  fill="currentColor"
+                >
+                  <path
+                    fill-rule="evenodd"
+                    d="M9.401 3.003c1.155-2 4.043-2 5.197 0l7.355 12.748c1.154 2-.29 4.5-2.599 4.5H4.645c-2.309 0-3.752-2.5-2.598-4.5L9.4 3.003zM12 8.25a.75.75 0 01.75.75v3.75a.75.75 0 01-1.5 0V9a.75.75 0 01.75-.75zm0 8.25a.75.75 0 100-1.5.75.75 0 000 1.5z"
+                    clip-rule="evenodd"
+                  />
+                </svg>
+              </span>
+              Result Not Valid! Maximum Result will be 100.
+            </p>
           </div>
         </div>
-
-        <!-- advice -->
-        <div class="w-full md:w-1/2">
-          <div class="mb:mb-3 mb-1">
-            <select
-              id="advice"
-              name="advice"
-              [(ngModel)]="modelMainUI.advCode"
-              (focus)="onOtherFocus()"
-              data-te-select-init
-              data-te-select-filter="true"
-            >
-              <option value="0">Select Advice</option>
-              @for (item of advices; track item?.id) {
-              <option
-                value="{{ item.code }}"
-                [attr.selected]="modelMainUI.advCode == item.code ? true : null"
+        }
+  
+        <!-- Input Row 04 -->
+        <div
+          class="w-full flex md:flex-row flex-col gap-2 md:gap-5 mb-2 md:mb-0 mt-2 md:mt-0"
+        >
+          <!-- comment -->
+          <div class="w-full md:w-1/2">
+            <div class="mb:mb-3 mb-1">
+              <select
+                id="comment"
+                name="comment"
+                [(ngModel)]="modelMainUI.comCode"
+                (focus)="onOtherFocus()"
+                (keydown)="handleKeydown($event)"
+                data-te-select-init
+                data-te-select-filter="true"
               >
-                {{ item.code }}---{{ item.advices }}
-              </option>
-              }
-            </select>
-            <label for="advice" data-te-select-label-ref class="text-primary"
-              >Advice</label
-            >
+                <option value="0">Select Comment</option>
+                @for (item of comments; track item?.id) {
+                <option
+                  value="{{ item.code }}"
+                  [attr.selected]="modelMainUI.comCode == item.code ? true : null"
+                >
+                  {{ item.code }}---{{ item.comments }}
+                </option>
+                }
+              </select>
+              <label for="comment" data-te-select-label-ref class="text-primary"
+                >Comment</label
+              >
+            </div>
+          </div>
+  
+          <!-- advice -->
+          <div class="w-full md:w-1/2">
+            <div class="mb:mb-3 mb-1">
+              <select
+                id="advice"
+                name="advice"
+                [(ngModel)]="modelMainUI.advCode"
+                (focus)="onOtherFocus()"
+                (keydown)="handleKeydown($event)"
+                data-te-select-init
+                data-te-select-filter="true"
+              >
+                <option value="0">Select Advice</option>
+                @for (item of advices; track item?.id) {
+                <option
+                  value="{{ item.code }}"
+                  [attr.selected]="modelMainUI.advCode == item.code ? true : null"
+                >
+                  {{ item.code }}---{{ item.advices }}
+                </option>
+                }
+              </select>
+              <label for="advice" data-te-select-label-ref class="text-primary"
+                >Advice</label
+              >
+            </div>
           </div>
         </div>
+  
+        <div class="pb-1 pt-1 text-center">
+          <input
+            class="mb-3 inline-block w-full rounded px-6 pb-2 pt-2.5 text-xs font-medium uppercase leading-normal text-white shadow-[0_4px_9px_-4px_rgba(0,0,0,0.2)] transition duration-150 ease-in-out hover:shadow-[0_8px_9px_-4px_rgba(0,0,0,0.1),0_4px_18px_0_rgba(0,0,0,0.2)] focus:shadow-[0_8px_9px_-4px_rgba(0,0,0,0.1),0_4px_18px_0_rgba(0,0,0,0.2)] focus:outline-none focus:ring-0 active:shadow-[0_8px_9px_-4px_rgba(0,0,0,0.1),0_4px_18px_0_rgba(0,0,0,0.2)]"
+            type="submit"
+            data-te-submit-btn-ref
+            Validate
+            [disabled]="
+              +modelMainUI.hbA +
+                +modelMainUI.hbF +
+                +modelMainUI.hbD +
+                +modelMainUI.hbE +
+                +modelMainUI.hbA2 +
+                +modelMainUI.hbJ +
+                +modelMainUI.hbQ +
+                +modelMainUI.hbS +
+                +modelMainUI.hbC +
+                +modelMainUI.hbBarts >
+              100.05
+            "
+            data-te-ripple-init
+            data-te-ripple-color="light"
+            style="
+              background: linear-gradient(
+                to right,
+                #ee7724,
+                #d8363a,
+                #dd3675,
+                #b44593
+              );
+            "
+            value="Save Report"
+          />
+        </div>
       </div>
-
-      <div class="pb-1 pt-1 text-center">
-        <input
-          class="mb-3 inline-block w-full rounded px-6 pb-2 pt-2.5 text-xs font-medium uppercase leading-normal text-white shadow-[0_4px_9px_-4px_rgba(0,0,0,0.2)] transition duration-150 ease-in-out hover:shadow-[0_8px_9px_-4px_rgba(0,0,0,0.1),0_4px_18px_0_rgba(0,0,0,0.2)] focus:shadow-[0_8px_9px_-4px_rgba(0,0,0,0.1),0_4px_18px_0_rgba(0,0,0,0.2)] focus:outline-none focus:ring-0 active:shadow-[0_8px_9px_-4px_rgba(0,0,0,0.1),0_4px_18px_0_rgba(0,0,0,0.2)]"
-          type="submit"
-          data-te-submit-btn-ref
-          Validate
-          [disabled]="
-            +modelMainUI.hbA +
-              +modelMainUI.hbF +
-              +modelMainUI.hbD +
-              +modelMainUI.hbE +
-              +modelMainUI.hbA2 +
-              +modelMainUI.hbJ +
-              +modelMainUI.hbQ +
-              +modelMainUI.hbS +
-              +modelMainUI.hbC +
-              +modelMainUI.hbBarts >
-            100.05
-          "
-          data-te-ripple-init
-          data-te-ripple-color="light"
-          style="
-            background: linear-gradient(
-              to right,
-              #ee7724,
-              #d8363a,
-              #dd3675,
-              #b44593
-            );
-          "
-          value="Save Report"
-        />
+      <div class="col-span-1">
+        <h3 class="font-semibold">Todays Total Test: {{asideMainUI.length}}</h3>
+        <ul>
+          @for (item of asideMainUI; track item?.id) {
+          <li
+            [ngClass]="{
+              'hover:bg-primary hover:text-white flex search-item border border-gray-300 rounded my-1 px-3 py-1 cursor-pointer': true,
+              selected: item?.pid === qq
+            }"
+            (click)="onMainUIClick(item.id)"
+          >
+            <p class="hidden">{{ item?.id }}</p>
+            <p class="">{{ item?.pid }} &rarr;</p>
+            <p class="">{{ item?.name }}</p>
+          </li>
+          }
+        </ul>
       </div>
     </div>
+    
   </form>
 
   <!-- Modal for reference doctor -->

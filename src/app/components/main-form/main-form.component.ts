@@ -51,7 +51,7 @@ import { environment } from '../../../environments/environments';
   templateUrl: './main-form.component.html',
   styleUrl: './main-form.component.css',
 })
-export class MainFormComponent implements OnInit, OnDestroy, AfterViewInit  {
+export class MainFormComponent implements OnInit, OnDestroy, AfterViewInit {
   dataService = inject(DataService);
   parseFloat(arg0: number) {
     throw new Error('Method not implemented.');
@@ -70,6 +70,7 @@ export class MainFormComponent implements OnInit, OnDestroy, AfterViewInit  {
   editSealId!: string | undefined;
   mainUI: any[] = [];
   searchMainUI: any[] = [];
+  asideMainUI: any[] = [];
   mainUI$?: Observable<any[]>;
   originalMainUI: any[] = [];
   doctors$?: Observable<DoctorModel[]>;
@@ -237,6 +238,8 @@ export class MainFormComponent implements OnInit, OnDestroy, AfterViewInit  {
         if (mainUI) {
           this.originalMainUI = mainUI;
           this.mainUI = mainUI;
+
+          this.filterByDate();
           // console.log(this.originalMainUI.filter(i => this.transformDate(i.date) == this.transformDate(this.modelMainUI.date)));
         }
       });
@@ -282,7 +285,7 @@ export class MainFormComponent implements OnInit, OnDestroy, AfterViewInit  {
   }
 
   // handle keyboard navigation
-  handleKeyDown(event: KeyboardEvent): void {
+  handleKey(event: KeyboardEvent): void {
     if (this.searchResults && this.searchResults.nativeElement) {
       const items =
         this.searchResults.nativeElement.querySelectorAll('.search-item');
@@ -344,6 +347,16 @@ export class MainFormComponent implements OnInit, OnDestroy, AfterViewInit  {
     }
   }
 
+  // Aside mainUI data by date
+  filterByDate() {
+    this.asideMainUI = this.originalMainUI.filter(
+      (a) => this.transformDate(a.date) == this.transformDate(this.modelMainUI.date)
+    )
+    console.log(this.asideMainUI)
+  }
+
+  // Search mainUI data by name
+
   // Search mainUI data by PID
   onPIDSearch(search: string) {
     if (this.originalMainUI.length > 0 && search.trim() !== '' && search.length > 0) {
@@ -402,6 +415,7 @@ export class MainFormComponent implements OnInit, OnDestroy, AfterViewInit  {
   // Add & Update MainUI Form
   onFormSubmit(): void {
     if (this.modelMainUI.pid && this.modelMainUI.name && this.modelMainUI.age && this.modelMainUI.pid != 'null' && this.modelMainUI.name != 'null' && this.modelMainUI.age != 'null') {
+      console.log(this.modelMainUI.others1)
       const addData = new FormData();
       addData.append('CompanyID', this.companyID.toString());
       addData.append('Date', this.transformDate(this.modelMainUI.date));
@@ -461,6 +475,12 @@ export class MainFormComponent implements OnInit, OnDestroy, AfterViewInit  {
         editData.append('Others2', this.modelMainUI.others2 || '');
         editData.append('Others3', this.modelMainUI.others3 || '');
         editData.append('IsMachineData', this.modelMainUI.isMachineData || false);
+        // Check form Data
+        const jsonObject: any = {};
+        editData.forEach((value, key) => {
+          jsonObject[key] = value;
+        });
+        console.log(JSON.stringify(jsonObject, null, 2));
         // Update MainUI by Id
         this.editMainUISubscription = this.mainUIService
           .updateMainUI(this.editMainUIId, editData)
@@ -945,6 +965,29 @@ export class MainFormComponent implements OnInit, OnDestroy, AfterViewInit  {
     window.location.reload();
   }
 
+  preventEnterSubmit(event: Event): void {
+    const keyboardEvent = event as KeyboardEvent;
+    if (keyboardEvent.key === 'Enter') {
+      keyboardEvent.preventDefault();
+    }
+  }
+
+  handleKeydown(event: KeyboardEvent): void {
+    if (event.key === 'Enter') {
+      event.preventDefault();
+
+      const form = (event.target as HTMLElement).closest('form');
+      if (form) {
+        const inputs = Array.from(form.querySelectorAll('input, select, textarea'));
+        const index = inputs.indexOf(event.target as HTMLInputElement);
+        if (index > -1 && index < inputs.length - 1) {
+          const nextInput = inputs[index + 1];
+          (nextInput as HTMLElement).focus();
+        }
+      }
+    }
+  }
+
   // get the current date in 'yyyy-mm-dd' format
   getCurrentDate(): string {
     const today = new Date();
@@ -966,16 +1009,16 @@ export class MainFormComponent implements OnInit, OnDestroy, AfterViewInit  {
   //     'YY/MM/DD',
   //     'YY-MM-DD',
   //   ];
-  
+
   //   let date: Date | null = null;
-  
+
   //   for (const format of dateFormats) {
   //     date = this.tryParseDate(dateString, format);
   //     if (date !== null) {
   //       break;
   //     }
   //   }
-  
+
   //   if (date !== null) {
   //     return this.datePipe.transform(date, 'yyyy-MM-dd');
   //   } else {
@@ -983,26 +1026,26 @@ export class MainFormComponent implements OnInit, OnDestroy, AfterViewInit  {
   //     return null; // Or handle the error in another way
   //   }
   // }
-  
+
   private tryParseDate(dateString: string, format: string): Date | null {
     const parts = dateString?.split(/[\-\/]/);
     const formatParts = format?.split('/');
-    
+
     const dayIndex = formatParts?.indexOf('DD');
     const monthIndex = formatParts?.indexOf('MM');
     const yearIndex = formatParts?.indexOf('YYYY');
-  
+
     if (dayIndex === -1 || monthIndex === -1 || yearIndex === -1) {
       // console.log('Invalid date format:', format);
       return null;
     }
-  
+
     const day = parseInt(parts[dayIndex], 10);
     const month = parseInt(parts[monthIndex], 10) - 1; // Month is zero-based in JavaScript
     const year = parseInt(parts[yearIndex], 10);
-  
+
     const parsedDate = new Date(year, month, day);
-  
+
     // Check if the parsed date is valid
     if (
       parsedDate?.getDate() === day &&
@@ -1014,7 +1057,7 @@ export class MainFormComponent implements OnInit, OnDestroy, AfterViewInit  {
       return null;
     }
   }
-  
+
 
   // Update the focus event handlers
   onInputFocus() {

@@ -155,6 +155,17 @@
         </p>
         <p class="barCode pt-1">{{ mainUI?.pid }}</p>
       </div>
+      @if (mainUI?.others1) {
+      <div class="flex justify-between relative">
+        <p class="mr-4">
+          <span
+            >Customer ID.
+            &nbsp;
+            : </span
+          >&nbsp;&nbsp; <span class="font-bold">{{ mainUI?.others1 }}</span>
+        </p>
+      </div>
+      }
       @if (mainUI?.cabin) {
       <div class="flex justify-between relative">
         <p class="mr-4">
