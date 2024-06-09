@@ -402,6 +402,9 @@ export class MainFormComponent implements OnInit, OnDestroy, AfterViewInit {
         this.modelMainUI.hbC = response.hbC;
         this.modelMainUI.hbBarts = response.hbBarts;
         this.modelMainUI.cabin = response.cabin;
+        this.modelMainUI.bed = response.bed;
+        this.modelMainUI.sampleID = response.sampleID;
+        this.modelMainUI.rDate = response.rDate;
         this.modelMainUI.others1 = response.others1;
         this.modelMainUI.others2 = response.others2;
         this.modelMainUI.others3 = response.others3;
@@ -442,6 +445,9 @@ export class MainFormComponent implements OnInit, OnDestroy, AfterViewInit {
       addData.append('HbC', this.modelMainUI.hbC);
       addData.append('HbBarts', this.modelMainUI.hbBarts);
       addData.append('Cabin', this.modelMainUI.cabin);
+      addData.append('bed', this.modelMainUI.bed);
+      addData.append('sampleID', this.modelMainUI.sampleID);
+      addData.append('rDate', this.modelMainUI.rDate);
       addData.append('Others1', this.modelMainUI.others1);
       addData.append('Others2', this.modelMainUI.others2);
       addData.append('Others3', this.modelMainUI.others3);
@@ -471,6 +477,9 @@ export class MainFormComponent implements OnInit, OnDestroy, AfterViewInit {
         editData.append('HbC', this.modelMainUI.hbC || '');
         editData.append('HbBarts', this.modelMainUI.hbBarts || '');
         editData.append('Cabin', this.modelMainUI.cabin || '');
+        editData.append('bed', this.modelMainUI.bed || '');
+        editData.append('sampleID', this.modelMainUI.sampleID || '');
+        editData.append('rDate', this.modelMainUI.rDate || '');
         editData.append('Others1', this.modelMainUI.others1 || '');
         editData.append('Others2', this.modelMainUI.others2 || '');
         editData.append('Others3', this.modelMainUI.others3 || '');
@@ -563,6 +572,9 @@ export class MainFormComponent implements OnInit, OnDestroy, AfterViewInit {
       hbC: '',
       hbBarts: '',
       cabin: '',
+      bed: '',
+      sampleID: '',
+      rDate: '',
       others1: '',
       others2: '',
       others3: '',

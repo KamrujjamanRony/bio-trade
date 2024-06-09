@@ -4,7 +4,6 @@ import { CanvasJSAngularChartsModule } from '@canvasjs/angular-charts';
 import { FormsModule } from '@angular/forms';
 import { Input, initTE, Select, Collapse } from 'tw-elements';
 import { ActivatedRoute, Router, RouterLink } from '@angular/router';
-import { MainUIModel } from '../../features/model/MainUI.model';
 import { Observable, Subscription } from 'rxjs';
 import { MainUIService } from '../../features/services/main-ui.service';
 import { SealModel } from '../../features/model/Seal.model';
@@ -31,7 +30,7 @@ import { DataService } from '../../features/services/data.service';
 export class ResultComponent implements OnInit, OnDestroy {
   dataService = inject(DataService);
   id: string | null = null;
-  mainUI?: MainUIModel;
+  mainUI?: any;
   margin$?: Observable<MarginModel | undefined>;
   margin?: string;
   marginId?: string;

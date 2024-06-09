@@ -333,7 +333,7 @@
             data-te-input-wrapper-init
           >
             <label
-              for="others2"
+              for="rDate"
               class="absolute left-3 top-0 max-w-[90%] origin-[0_0] translate-y-[-0.7rem] scale-[0.8] text-primary bg-white px-2 z-10"
               >Received Date
             </label>
@@ -342,9 +342,9 @@
               type="text"
               class="block min-h-[auto] w-full rounded border-0 bg-transparent px-3 py-[0.32rem] leading-[1.6] outline-none relative"
               placeholder="Select a date"
-              id="others2"
-              name="others2"
-              [(ngModel)]="modelMainUI.others2"
+              id="rDate"
+              name="rDate"
+              [(ngModel)]="modelMainUI.rDate"
               (keydown)="handleKeydown($event)"
             />
           </div>
@@ -355,7 +355,7 @@
               data-te-validate="input"
             >
               <label
-                for="others1"
+                for="sampleID"
                 class="absolute left-3 top-0 max-w-[90%] origin-[0_0] translate-y-[-0.7rem] scale-[0.8] text-primary bg-white px-2 z-10"
                 >Customer ID.
               </label>
@@ -363,11 +363,11 @@
                 autocomplete="off"
                 type="text"
                 class="block min-h-[auto] w-full rounded border-0 bg-transparent px-3 py-[0.32rem] leading-[1.6] outline-none relative"
-                id="others1"
-                name="others1"
+                id="sampleID"
+                name="sampleID"
                 placeholder="Customer ID."
                 required="true"
-                [(ngModel)]="modelMainUI.others1"
+                [(ngModel)]="modelMainUI.sampleID"
                 (keydown)="handleKeydown($event)"
               />
             </div>
@@ -465,7 +465,7 @@
               data-te-validate="input"
             >
               <label
-                for="others3"
+                for="bed"
                 class="absolute left-3 top-0 max-w-[90%] origin-[0_0] translate-y-[-0.7rem] scale-[0.8] text-primary bg-white px-2 z-10"
                 >Bed No.
               </label>
@@ -473,10 +473,10 @@
                 autocomplete="off"
                 type="text"
                 class="block min-h-[auto] w-full rounded border-0 bg-transparent px-3 py-[0.32rem] leading-[1.6] outline-none relative"
-                id="others3"
-                name="others3"
+                id="bed"
+                name="bed"
                 placeholder="Bed No."
-                [(ngModel)]="modelMainUI.others3"
+                [(ngModel)]="modelMainUI.bed"
                 (keydown)="handleKeydown($event)"
               />
             </div>

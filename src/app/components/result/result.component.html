@@ -149,20 +149,18 @@
         <p class="mr-4">
           <span
             >ID No.
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
             : </span
-          >&nbsp;&nbsp; <span class="font-bold">{{ mainUI?.pid }}</span>
+          >&nbsp;<span class="font-bold">{{ mainUI?.pid }}</span>
         </p>
         <p class="barCode pt-1">{{ mainUI?.pid }}</p>
       </div>
-      @if (mainUI?.others1) {
+      @if (mainUI?.sampleID) {
       <div class="flex justify-between relative">
         <p class="mr-4">
           <span
-            >Customer ID.
-            &nbsp;
-            : </span
-          >&nbsp;&nbsp; <span class="font-bold">{{ mainUI?.others1 }}</span>
+            >Customer ID: </span
+          > <span class="font-bold">{{ mainUI?.sampleID }}</span>
         </p>
       </div>
       }
@@ -170,28 +168,24 @@
       <div class="flex justify-between relative">
         <p class="mr-4">
           <span
-            >Cabin No.
-            &nbsp;
-            : </span
-          >&nbsp;&nbsp; <span class="font-bold">{{ mainUI?.cabin }}</span>
+            >Cabin No: </span
+          > <span class="font-bold">{{ mainUI?.cabin }}</span>
         </p>
       </div>
       }
-      @if (mainUI?.others3) {
+      @if (mainUI?.bed) {
       <div class="flex justify-between relative">
         <p class="mr-4">
           <span
-            >Bed No.
-            &nbsp;
-            : </span
-          >&nbsp;&nbsp; <span class="font-bold">{{ mainUI?.others3 }}</span>
+            >Bed No: </span
+          > <span class="font-bold">{{ mainUI?.bed }}</span>
         </p>
       </div>
       }
-      @if (mainUI?.others2) {
+      @if (mainUI?.rDate) {
         <p>
-          <span>Received Date &nbsp;&nbsp; :  &nbsp;&nbsp;</span
-          ><span>{{ transformDate(mainUI?.others2) }}</span>
+          <span>Received Date:  </span
+          ><span>{{ transformDate(mainUI?.rDate) }}</span>
         </p>
       } @else {
         <p>
@@ -204,9 +198,9 @@
       <p>
         <span
           >Name
-          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           : </span
-        >&nbsp;&nbsp; <span>{{ mainUI?.name }}</span>
+        >&nbsp;<span>{{ mainUI?.name }}</span>
       </p>
       <div class="flex md:flex-row flex-col justify-between w-60" [class.flex-when-printing]="isPrinting">
         <p>
@@ -220,9 +214,9 @@
     <div class="flex justify-start">
       <p>
         <span
-          >Refd. by &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+          >Refd. by &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           : </span
-        >&nbsp;&nbsp;&nbsp;
+        >&nbsp;
       </p>
       @if (refDoctor?.name) {
         <p class="" [class.small-when-printing]="isPrinting">{{ refDoctor.name }}</p>
@@ -230,8 +224,8 @@
     </div>
     <div class="flex md:flex-row flex-col justify-between" [class.flex-when-printing]="isPrinting">
       <p>
-        <span>Specimen &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; : </span
-        >&nbsp;&nbsp; <span>Blood</span>
+        <span>Specimen &nbsp;&nbsp; : </span
+        >&nbsp;<span>Blood</span>
       </p>
       @if (mainUI?.others2) {
       <p>
