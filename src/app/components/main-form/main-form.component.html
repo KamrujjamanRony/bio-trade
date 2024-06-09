@@ -830,16 +830,15 @@
                         Total =
                         {{
                           (
-                            +modelMainUI.hbA +
+                            +modelMainUI.hbBarts +
                             +modelMainUI.hbF +
-                            +modelMainUI.hbD +
-                            +modelMainUI.hbE +
-                            +modelMainUI.hbA2 +
                             +modelMainUI.hbJ +
+                            +modelMainUI.hbA +
                             +modelMainUI.hbL +
-                            +modelMainUI.hbQ +
-                            +modelMainUI.hbS +
-                            +modelMainUI.hbBarts
+                            +modelMainUI.hbA2 +
+                            +modelMainUI.hbE +
+                            +modelMainUI.hbD +
+                            +modelMainUI.hbS
                           ).toFixed(1)
                         }}
                       </td>
@@ -996,8 +995,9 @@
             (click)="onMainUIClick(item.id)"
           >
             <p class="hidden">{{ item?.id }}</p>
-            <p class="">{{ item?.pid }} &rarr;</p>
-            <p class="">{{ item?.name }}</p>
+            <p>{{ item?.pid }}</p>
+            <p class="hidden md:block"> &rarr;</p>
+            <p class="hidden md:block">{{ item?.name }}</p>
           </li>
           }
         </ul>

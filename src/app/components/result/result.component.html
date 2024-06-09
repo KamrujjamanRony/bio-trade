@@ -146,7 +146,7 @@
   <div class="bg-white p-1 rounded-md shadow-md">
     <div class="flex md:flex-row flex-col justify-between" [class.flex-when-printing]="isPrinting">
       <div class="flex justify-between relative">
-        <p class="mr-4">
+        <p class="mr-2">
           <span
             >ID No.
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
@@ -184,12 +184,12 @@
       }
       @if (mainUI?.rDate) {
         <p>
-          <span>Received Date:  </span
+          <span>Received Date : </span
           ><span>{{ transformDate(mainUI?.rDate) }}</span>
         </p>
       } @else {
         <p>
-          <span>Date &nbsp;&nbsp; :  &nbsp;&nbsp;</span
+          <span>Date : </span
           ><span>{{ getCurrentDate() }}</span>
         </p>
       }
@@ -204,10 +204,10 @@
       </p>
       <div class="flex md:flex-row flex-col justify-between w-60" [class.flex-when-printing]="isPrinting">
         <p>
-          <span>Age &nbsp;&nbsp;: </span><span>{{ mainUI?.age }}</span>
+          <span>Age : </span><span>{{ mainUI?.age }}</span>
         </p>
         <p>
-          <span>Sex &nbsp;&nbsp;: </span><span>{{ mainUI?.sex }}</span>
+          <span>Sex : </span><span>{{ mainUI?.sex }}</span>
         </p>
       </div>
     </div>
@@ -227,9 +227,9 @@
         <span>Specimen &nbsp;&nbsp; : </span
         >&nbsp;<span>Blood</span>
       </p>
-      @if (mainUI?.others2) {
+      @if (mainUI?.rDate) {
       <p>
-        <span>Delivery Date &nbsp;&nbsp; :  &nbsp;&nbsp;</span
+        <span>Delivery Date : </span
         ><span>{{ transformDate(mainUI?.date) }}</span>
       </p>
       }
