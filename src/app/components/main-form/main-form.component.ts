@@ -22,27 +22,13 @@ import {
 } from 'tw-elements';
 import { Router } from '@angular/router';
 import { Observable, Subscription, catchError, of, switchMap } from 'rxjs';
-import {
-  AddDoctorRequest,
-  DoctorModel,
-} from '../../features/model/Doctor.model';
-import { DoctorService } from '../../features/services/doctor.service';
-import { AddSealRequest, SealModel } from '../../features/model/Seal.model';
-import { SealService } from '../../features/services/seal.service';
-import {
-  AddCommentRequest,
-  CommentModel,
-} from '../../features/model/Comment.model';
-import { CommentService } from '../../features/services/comment.service';
-import { MainUIService } from '../../features/services/main-ui.service';
-import {
-  AddAdviceRequest,
-  AdviceModel,
-} from '../../features/model/Advice.model';
-import { AdviceService } from '../../features/services/advice.service';
-import { AuthService } from '../../features/services/auth.service';
-import { DataService } from '../../features/services/data.service';
-import { environment } from '../../../environments/environments';
+import { AdviceService } from '../../services/advice.service';
+import { DataService } from '../../services/data.service';
+import { MainUIService } from '../../services/main-ui.service';
+import { DoctorService } from '../../services/doctor.service';
+import { SealService } from '../../services/seal.service';
+import { CommentService } from '../../services/comment.service';
+import { AuthService } from '../../services/auth.service';
 
 @Component({
   selector: 'app-main-form',
@@ -58,11 +44,11 @@ export class MainFormComponent implements OnInit, OnDestroy, AfterViewInit {
   }
   isError: boolean = false;
   loading: boolean = true;
-  modelAdvice: AddAdviceRequest;
-  modelComment: AddCommentRequest;
-  modelDoctor: AddDoctorRequest;
+  modelAdvice: any;
+  modelComment: any;
+  modelDoctor: any;
   modelMainUI: any = {};
-  modelSeal: AddSealRequest;
+  modelSeal: any;
   editMainUIId!: string | undefined;
   editDoctorId!: string | undefined;
   editCommentId!: string | undefined;
@@ -73,18 +59,18 @@ export class MainFormComponent implements OnInit, OnDestroy, AfterViewInit {
   asideMainUI: any[] = [];
   mainUI$?: Observable<any[]>;
   originalMainUI: any[] = [];
-  doctors$?: Observable<DoctorModel[]>;
-  originalDoctors: DoctorModel[] = [];
-  doctors: DoctorModel[] = [];
-  comments$?: Observable<CommentModel[]>;
-  originalComments: CommentModel[] = [];
-  comments: CommentModel[] = [];
-  comment!: CommentModel;
-  advices$?: Observable<AdviceModel[]>;
-  originalAdvices: AdviceModel[] = [];
-  advices: AdviceModel[] = [];
-  seals$?: Observable<SealModel[]>;
-  seals?: SealModel[];
+  doctors$?: Observable<any[]>;
+  originalDoctors: any[] = [];
+  doctors: any[] = [];
+  comments$?: Observable<any[]>;
+  originalComments: any[] = [];
+  comments: any[] = [];
+  comment!: any;
+  advices$?: Observable<any[]>;
+  originalAdvices: any[] = [];
+  advices: any[] = [];
+  seals$?: Observable<any[]>;
+  seals?: any[];
   Company$?: Observable<any[]>;
   Company: any = '';
   qq: any = '';
@@ -865,9 +851,9 @@ export class MainFormComponent implements OnInit, OnDestroy, AfterViewInit {
       addData.append('Degree', this.modelSeal.degree);
       addData.append('Position', this.modelSeal.position);
 
-      let updateExistingSeal$: Observable<SealModel | null> = this.editSealId
+      let updateExistingSeal$: Observable<any | null> = this.editSealId
         ? this.sealService.updateSeal(this.editSealId, addData)
-        : of(null as SealModel | null);
+        : of(null as any | null);
 
       this.seals$ = this.sealService.getCompanySeals(this.companyID);
 
@@ -896,7 +882,7 @@ export class MainFormComponent implements OnInit, OnDestroy, AfterViewInit {
           }),
           catchError((error) => {
             console.log('Error updating seals:', error);
-            return of(null as SealModel | null);
+            return of(null as any | null);
           })
         )
         .subscribe((updateExistingSealResponse) => {

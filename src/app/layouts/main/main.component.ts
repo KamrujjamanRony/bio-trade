@@ -1,15 +1,14 @@
 import { CommonModule } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
-import { AuthService } from '../../features/services/auth.service';
 import { FormsModule } from '@angular/forms';
 import {
   Input,
   Ripple,
   initTE,
 } from "tw-elements";
-import { Auth } from '../../features/data';
 import { Observable } from 'rxjs';
+import { AuthService } from '../../services/auth.service';
 
 @Component({
   selector: 'app-main',

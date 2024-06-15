@@ -11,8 +11,8 @@ import {
   Modal,
   Collapse,
 } from 'tw-elements';
-import { MainUIService } from '../../features/services/main-ui.service';
-import { AuthService } from '../../features/services/auth.service';
+import { MainUIService } from '../../services/main-ui.service';
+import { AuthService } from '../../services/auth.service';
 
 @Component({
   selector: 'app-test-count',

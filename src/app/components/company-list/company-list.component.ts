@@ -1,7 +1,5 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Observable, Subscription } from 'rxjs';
-import { CommentService } from '../../features/services/comment.service';
-import { AuthService } from '../../features/services/auth.service';
 import { CommonModule, NgClass } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import {
@@ -13,6 +11,7 @@ import {
   Modal,
   Collapse,
 } from 'tw-elements';
+import { AuthService } from '../../services/auth.service';
 
 @Component({
   selector: 'app-company-list',
