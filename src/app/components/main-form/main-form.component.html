@@ -983,13 +983,13 @@
           />
         </div>
       </div>
-      <div class="col-span-1">
+      <div class="col-span-1 bg-slate-200 h-fit p-1 rounded">
         <h3 class="font-semibold">Todays Total Test: {{asideMainUI.length}}</h3>
         <ul>
           @for (item of asideMainUI; track item?.id) {
           <li
             [ngClass]="{
-              'hover:bg-primary hover:text-white flex search-item border border-gray-300 rounded my-1 px-3 py-1 cursor-pointer': true,
+              'hover:bg-primary bg-white hover:text-white flex search-item border border-gray-300 rounded my-1 px-3 py-1 cursor-pointer': true,
               selected: item?.pid === qq
             }"
             (click)="onMainUIClick(item.id)"

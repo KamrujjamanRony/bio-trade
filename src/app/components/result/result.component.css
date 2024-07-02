@@ -1,5 +1,6 @@
 .barCode{
-  font-family: 'Libre Barcode 39';font-size: 24px;
+  font-family: 'Libre Barcode 39';
+  font-size: 24px;
   overflow: hidden;
   white-space: nowrap;
   text-overflow: ellipsis;
@@ -23,6 +24,9 @@
       border: 2px solid black !important;
       max-width: 700px !important;
       font-size: small;
+    }
+    .margin-top-when-printing {
+      margin-top: -70px !important;
     }
     .position-when-printing {
       bottom: 0 !important;

@@ -139,8 +139,26 @@
   </div>
 </div>
 
+
+
 <!-- Heading -->
-<div class="bg-black p-[2px] rounded-md max-w-4xl mx-auto text-sm mt-5" 
+<div [class.margin-top-when-printing]="isPrinting">
+  <!-- Custom Heading for Company 9 -->
+ @if (companyID == 9) {
+  <div class="text-center">
+    <div class="container mx-auto flex justify-center items-center gap-2">
+      <img class="w-16" src="https://pbs.twimg.com/media/Dh0-C71VAAA0NWh.jpg:large" alt="">
+      <div>
+        <h1 class="text-3xl font-bold uppercase">dhaka shishu (children) hospital</h1>
+        <h3 class="text-lg font-semibold uppercase">sher-e-bangla nagar, dhaka-1207</h3>
+      </div>
+    </div>
+    <p class="text-md font-semibold">Phone (PABX) : 9104211-02, Ext.-106</p>
+    <h3 class="text-xl font-semibold uppercase text-red-600">department of pathology</h3>
+   </div>
+ }
+ <!-- Custom Heading for Company 9 End -->
+  <div class="bg-black p-[2px] rounded-md max-w-4xl mx-auto text-sm mt-5" 
 [class.black-when-printing]="isPrinting"  
 >
   <div class="bg-white p-1 rounded-md shadow-md">
@@ -235,6 +253,7 @@
       }
     </div>
   </div>
+</div>
 </div>
 
 <div class="max-w-5xl mx-auto text-center">
