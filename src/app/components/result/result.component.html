@@ -437,17 +437,17 @@
 <div class="max-w-4xl mx-auto mt-5"  [class.margin-left-when-printing]="isPrinting">
   <!-- Comments -->
 @if (comment?.comments) {
-  <p class="max-w-5xl mx-auto text-sm mt-10">
-    <span class="font-bold">Comments &nbsp;:</span>&nbsp;&nbsp;
-    {{ comment.comments }}
-  </p>
+  <div class="max-w-5xl mx-auto text-sm mt-10 flex">
+    <p class="font-bold">Comments &nbsp;:</p>&nbsp;&nbsp;
+    <p style="white-space: pre-line">{{ comment.comments }}</p>
+  </div>
   }
   <!-- Advice -->
   @if (advice?.advices) {
-  <p class="max-w-5xl mx-auto text-sm">
-    <span class="font-bold">Advice &nbsp;:</span
-    >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; {{ advice.advices }}
-  </p>
+  <div class="max-w-5xl mx-auto text-sm mt-3 flex">
+    <p class="font-bold">Advice &nbsp;:</p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+    <p style="white-space: pre-line">{{ advice.advices }}</p>
+  </div>
   }
   
   <div class="h-5"></div>
