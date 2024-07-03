@@ -434,17 +434,17 @@
   </div>
 </div>
 
-<div class="max-w-4xl mx-auto mt-5"  [class.margin-left-when-printing]="isPrinting">
+<div class="max-w-3xl mx-auto mt-5" [class.margin-left-when-printing]="isPrinting">
   <!-- Comments -->
 @if (comment?.comments) {
-  <div class="max-w-5xl mx-auto text-sm mt-10 flex">
+  <div class="text-sm flex mt-5">
     <p class="font-bold">Comments &nbsp;:</p>&nbsp;&nbsp;
     <p style="white-space: pre-line">{{ comment.comments }}</p>
   </div>
   }
   <!-- Advice -->
   @if (advice?.advices) {
-  <div class="max-w-5xl mx-auto text-sm mt-3 flex">
+  <div class="text-sm mt-3 flex">
     <p class="font-bold">Advice &nbsp;:</p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
     <p style="white-space: pre-line">{{ advice.advices }}</p>
   </div>
