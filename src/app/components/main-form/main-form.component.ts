@@ -205,10 +205,6 @@ export class MainFormComponent implements OnInit, OnDestroy, AfterViewInit {
       this.jsonData = data.data.find((d: { id: any; }) => d.id == this.companyID);
       console.log(this.jsonData);
     });
-    // initTE(
-    //   { Validation, Input, Datepicker, Select, Modal, Collapse, Toast },
-    //   { allowReinits: true }
-    // );
 
     // disable future date
     const datepickerDisableFuture = document.getElementById(
