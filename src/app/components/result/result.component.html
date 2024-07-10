@@ -315,7 +315,7 @@
                 {{ (+mainUI.hbF).toFixed(1) }}
               </td>
               <td class="whitespace-nowrap px-6 py-1 font-medium">
-                <2
+                @if (jsonData) {{{jsonData?.hbF}}} @else {<2}
               </td>
             </tr>
             } @if (mainUI.hbJ) {
@@ -327,6 +327,7 @@
                 {{ (+mainUI.hbJ).toFixed(1) }}
               </td>
               <td class="whitespace-nowrap px-6 py-1 font-medium">
+                @if (jsonData) {{{jsonData?.hbJ}}} @else {}
               </td>
             </tr>
             } @if (mainUI.hbA) {
@@ -338,7 +339,7 @@
                 {{ (+mainUI.hbA).toFixed(1) }}
               </td>
               <td class="whitespace-nowrap px-6 py-1 font-medium">
-                96.1-98.5
+                @if (jsonData) {{{jsonData?.hbA}}} @else {96.1-98.5}
               </td>
             </tr>
             } @if (mainUI.hbL) {
@@ -350,6 +351,7 @@
                 {{ (+mainUI.hbL).toFixed(1) }}
               </td>
               <td class="whitespace-nowrap px-6 py-1 font-medium">
+                @if (jsonData) {{{jsonData?.hbL}}} @else {}
               </td>
             </tr>
             } @if (mainUI.hbA2) {
@@ -363,7 +365,7 @@
                 {{ (+mainUI.hbA2).toFixed(1) }}
               </td>
               <td class="whitespace-nowrap px-6 py-1 font-medium">
-                2.2-4.0
+                @if (jsonData) {{{jsonData?.hbA2}}} @else {2.2-4.0}
               </td>
             </tr>
             } @if (mainUI.hbE) {
@@ -375,6 +377,7 @@
                 {{ (+mainUI.hbE).toFixed(1) }}
               </td>
               <td class="whitespace-nowrap px-6 py-1 font-medium">
+                @if (jsonData) {{{jsonData?.hbE}}} @else {}
               </td>
             </tr>
             } @if (mainUI.hbD) {
@@ -386,6 +389,7 @@
                 {{ (+mainUI.hbD).toFixed(1) }}
               </td>
               <td class="whitespace-nowrap px-6 py-1 font-medium">
+                @if (jsonData) {{{jsonData?.hbD}}} @else {}
               </td>
             </tr>
             } @if (mainUI.hbS) {
@@ -397,6 +401,7 @@
                 {{ (+mainUI.hbS).toFixed(1) }}
               </td>
               <td class="whitespace-nowrap px-6 py-1 font-medium">
+                @if (jsonData) {{{jsonData?.hbS}}} @else {}
               </td>
             </tr>
             } 
@@ -434,17 +439,17 @@
   </div>
 </div>
 
-<div class="max-w-3xl mx-auto mt-5" [class.margin-left-when-printing]="isPrinting">
+<div class="max-w-3xl mx-auto mt-1" [class.margin-left-when-printing]="isPrinting">
   <!-- Comments -->
 @if (comment?.comments) {
-  <div class="text-sm flex mt-5">
+  <div class="text-sm flex mt-2">
     <p class="font-bold">Comments &nbsp;:</p>&nbsp;&nbsp;
     <p style="white-space: pre-line">{{ comment.comments }}</p>
   </div>
   }
   <!-- Advice -->
   @if (advice?.advices) {
-  <div class="text-sm mt-3 flex">
+  <div class="text-sm mt-2 flex">
     <p class="font-bold">Advice &nbsp;:</p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
     <p style="white-space: pre-line">{{ advice.advices }}</p>
   </div>
@@ -491,14 +496,26 @@
       </p>
       }
     </div>
-    <div class="w-[200px]">
-      @if (rightSeals) {
-      <h4 class="font-bold capitalize text-sm">{{ rightSeals.name }}</h4>
-      <p style="white-space: pre-line" class="text-xs font-medium">
-        {{ rightSeals.degree }}
-      </p>
-      }
-    </div>
+    @if (companyID == 6) {
+      <div class="w-[270px]">
+        @if (rightSeals) {
+        <h4 class="font-bold capitalize text-sm">{{ rightSeals.name }}</h4>
+        <p style="white-space: pre-line" class="text-xs font-medium">
+          {{ rightSeals.degree }}
+        </p>
+        }
+      </div>
+    } @else {
+      <div class="w-[200px]">
+        @if (rightSeals) {
+        <h4 class="font-bold capitalize text-sm">{{ rightSeals.name }}</h4>
+        <p style="white-space: pre-line" class="text-xs font-medium">
+          {{ rightSeals.degree }}
+        </p>
+        }
+      </div>
+    }
+    
   </div>
   }
 </div>
