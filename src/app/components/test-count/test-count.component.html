@@ -131,7 +131,7 @@
                   @for(data of companies; track data.id){
                   <tr
                     class="border-b bg-neutral-100 dark:border-neutral-500 dark:bg-neutral-700 text-center"
-                    [hidden]="data?.id.startsWith('a') || data?.id.startsWith('b')"
+                    [hidden]="data?.id.startsWith('a') || data?.id.startsWith('b') || data?.companyID.startsWith('h')"
                   >
                     <td class="whitespace-nowrap px-6 py-1">
                       {{ data?.id }}
