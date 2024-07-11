@@ -51,6 +51,11 @@ export class TestCountComponent implements OnInit, OnDestroy {
       disableFuture: true,
     });
   }
+  
+  // Method to check if the companyID starts with a number
+  isCompanyIDStartingWithNumber(companyID: string): boolean {
+    return /^[a-zA-Z]/.test(companyID);
+  }
 
   //============================= Test Count =============================
 
@@ -62,18 +67,27 @@ export class TestCountComponent implements OnInit, OnDestroy {
       countData.append('ToDate', this.modelTestCount.ToDate);
 
       this.testCountSubscription = this.mainUIService
-        .companyWiseTest(countData)
-        .subscribe({
-          next: (data) => {
-            this.companies = [];
-            this.companies$ = this.authService.getAllCompany();
-            this.companies$.subscribe((companies) => {
-              if (companies) {
-                 companies.map(c => data.map((d:any) => d.companyID == c.companyID) && this.companies.push({id: c.companyID, name: c.name, count: data.find((d: { companyID: any; })=> d.companyID == c.companyID).total}));
-              }
+  .companyWiseTest(countData)
+  .subscribe({
+    next: (data) => {
+      this.companies = [];
+      this.companies$ = this.authService.getAllCompany();
+
+      this.companies$.subscribe((companies) => {
+        companies.forEach((c) => {
+          const matchingData = data.find((d: any) => d.companyID == c.companyID);
+          if (matchingData) {
+            this.companies.push({
+              id: c.companyID,
+              name: c.name,
+              count: matchingData.total
             });
-          },
+          }
         });
+      });
+    }
+  });
+
     }
   }
 

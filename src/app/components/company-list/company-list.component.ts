@@ -50,6 +50,11 @@ export class CompanyListComponent implements OnInit, OnDestroy {
       { allowReinits: true }
     );
   }
+  
+  // Method to check if the companyID starts with a number
+  isCompanyIDStartingWithNumber(companyID: string): boolean {
+    return /^[a-zA-Z]/.test(companyID);
+  }
 
   //============================= Company =============================
 
