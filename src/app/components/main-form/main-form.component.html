@@ -624,11 +624,13 @@
                         />
                       </td>
                       <td class="whitespace-nowrap px-6 py-1 font-medium">
-                        {{jsonData?.hbBarts}}
+                        @if (jsonData) {{{jsonData?.hbBarts}}} @else {}
                       </td>
                     </tr>
                     <tr class="border-b border-primary-700 text-neutral-800">
-                      <td class="whitespace-nowrap px-6 py-1 font-bold">Hb F</td>
+                      <td class="whitespace-nowrap px-6 py-1 font-bold">
+                        Hb F
+                      </td>
                       <td class="whitespace-nowrap px-6 py-1 font-medium">
                         <input
                           autocomplete="off"
@@ -641,11 +643,13 @@
                         />
                       </td>
                       <td class="whitespace-nowrap px-6 py-1 font-medium">
-                        {{jsonData?.hbF}}
+                        @if (jsonData) {{{jsonData?.hbF}}} @else {<2}
                       </td>
                     </tr>
                     <tr class="border-b border-primary-700 text-neutral-800">
-                      <td class="whitespace-nowrap px-6 py-1 font-bold">Hb J</td>
+                      <td class="whitespace-nowrap px-6 py-1 font-bold">
+                        Hb J
+                      </td>
                       <td class="whitespace-nowrap px-6 py-1 font-medium">
                         <input
                           autocomplete="off"
@@ -658,11 +662,13 @@
                         />
                       </td>
                       <td class="whitespace-nowrap px-6 py-1 font-medium">
-                        {{jsonData?.hbJ}}
+                        @if (jsonData) {{{jsonData?.hbJ}}} @else {}
                       </td>
                     </tr>
                     <tr class="border-b border-primary-700 text-neutral-800">
-                      <td class="whitespace-nowrap px-6 py-1 font-bold">Hb A</td>
+                      <td class="whitespace-nowrap px-6 py-1 font-bold">
+                        Hb A
+                      </td>
                       <td class="whitespace-nowrap px-6 py-1 font-medium">
                         <input
                           autocomplete="off"
@@ -675,7 +681,7 @@
                         />
                       </td>
                       <td class="whitespace-nowrap px-6 py-1 font-medium">
-                        {{jsonData?.hbA}}
+                        @if (jsonData) {{{jsonData?.hbA}}} @else {96.1-98.5}
                       </td>
                     </tr>
                     <tr class="border-b border-primary-700 text-neutral-800">
@@ -694,7 +700,7 @@
                         />
                       </td>
                       <td class="whitespace-nowrap px-6 py-1 font-medium">
-                        {{jsonData?.hbL}}
+                        @if (jsonData) {{{jsonData?.hbL}}} @else {}
                       </td>
                     </tr>
                     <tr class="border-b border-primary-700 text-neutral-800">
@@ -713,11 +719,13 @@
                         />
                       </td>
                       <td class="whitespace-nowrap px-6 py-1 font-medium">
-                        {{jsonData?.hbA2}}
+                        @if (jsonData) {{{jsonData?.hbA2}}} @else {2.2-4.0}
                       </td>
                     </tr>
                     <tr class="border-b border-primary-700 text-neutral-800">
-                      <td class="whitespace-nowrap px-6 py-1 font-bold">Hb E</td>
+                      <td class="whitespace-nowrap px-6 py-1 font-bold">
+                        Hb E
+                      </td>
                       <td class="whitespace-nowrap px-6 py-1 font-medium">
                         <input
                           autocomplete="off"
@@ -730,11 +738,13 @@
                         />
                       </td>
                       <td class="whitespace-nowrap px-6 py-1 font-medium">
-                        {{jsonData?.hbE}}
+                        @if (jsonData) {{{jsonData?.hbE}}} @else {}
                       </td>
                     </tr>
                     <tr class="border-b border-primary-700 text-neutral-800">
-                      <td class="whitespace-nowrap px-6 py-1 font-bold">Hb D</td>
+                      <td class="whitespace-nowrap px-6 py-1 font-bold">
+                        Hb D
+                      </td>
                       <td class="whitespace-nowrap px-6 py-1 font-medium">
                         <input
                           autocomplete="off"
@@ -747,11 +757,13 @@
                         />
                       </td>
                       <td class="whitespace-nowrap px-6 py-1 font-medium">
-                        {{jsonData?.hbD}}
+                        @if (jsonData) {{{jsonData?.hbD}}} @else {}
                       </td>
                     </tr>
                     <tr class="border-b border-primary-700 text-neutral-800">
-                      <td class="whitespace-nowrap px-6 py-1 font-bold">Hb S</td>
+                      <td class="whitespace-nowrap px-6 py-1 font-bold">
+                        Hb S
+                      </td>
                       <td class="whitespace-nowrap px-6 py-1 font-medium">
                         <input
                           autocomplete="off"
@@ -764,14 +776,16 @@
                         />
                       </td>
                       <td class="whitespace-nowrap px-6 py-1 font-medium">
-                        {{jsonData?.hbS}}
+                        @if (jsonData) {{{jsonData?.hbS}}} @else {}
                       </td>
                     </tr>
                     <tr
                       class="border-b border-primary-700 text-neutral-800"
                       hidden
                     >
-                      <td class="whitespace-nowrap px-6 py-1 font-bold">Hb Q</td>
+                      <td class="whitespace-nowrap px-6 py-1 font-bold">
+                        Hb Q
+                      </td>
                       <td class="whitespace-nowrap px-6 py-1 font-medium">
                         <input
                           autocomplete="off"
@@ -784,13 +798,15 @@
                         />
                       </td>
                       <td class="whitespace-nowrap px-6 py-1 font-medium">
-                        {{jsonData?.hbQ}}
+                        @if (jsonData) {{{jsonData?.hbQ}}} @else {}
                       </td>
                     </tr>
                     <tr
                       class="border-b border-primary-700 text-neutral-800 hidden"
                     >
-                      <td class="whitespace-nowrap px-6 py-1 font-bold">Hb C</td>
+                      <td class="whitespace-nowrap px-6 py-1 font-bold">
+                        Hb C
+                      </td>
                       <td class="whitespace-nowrap px-6 py-1 font-medium">
                         <input
                           autocomplete="off"
@@ -803,7 +819,7 @@
                         />
                       </td>
                       <td class="whitespace-nowrap px-6 py-1 font-medium">
-                        {{jsonData?.hbC}}
+                        @if (jsonData) {{{jsonData?.hbC}}} @else {}
                       </td>
                     </tr>
                     <tr class="border-b border-primary-700 text-neutral-800">
@@ -820,7 +836,7 @@
                         />
                       </td>
                       <td class="whitespace-nowrap px-6 py-1 font-medium">
-                        {{jsonData?.hb}}
+                        @if (jsonData) {{{jsonData?.hb}}} @else {}
                       </td>
                     </tr>
                     <tr class="border-b border-primary-700 text-neutral-800">
