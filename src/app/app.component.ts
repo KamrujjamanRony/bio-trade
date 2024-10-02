@@ -1,14 +1,14 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule, Location } from '@angular/common';
 import { RouterOutlet } from '@angular/router';
-import { HttpClientModule } from '@angular/common/http';
+import {} from '@angular/common/http';
 
 @Component({
   selector: 'app-root',
   standalone: true,
   templateUrl: './app.component.html',
   styleUrl: './app.component.css',
-  imports: [CommonModule, RouterOutlet, HttpClientModule],
+  imports: [CommonModule, RouterOutlet],
 })
 export class AppComponent implements OnInit {
   title = 'biotrade';
