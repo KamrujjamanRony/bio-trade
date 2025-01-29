@@ -4,11 +4,10 @@ import { RouterOutlet } from '@angular/router';
 import {} from '@angular/common/http';
 
 @Component({
-  selector: 'app-root',
-  standalone: true,
-  templateUrl: './app.component.html',
-  styleUrl: './app.component.css',
-  imports: [CommonModule, RouterOutlet],
+    selector: 'app-root',
+    templateUrl: './app.component.html',
+    styleUrl: './app.component.css',
+    imports: [CommonModule, RouterOutlet]
 })
 export class AppComponent implements OnInit {
   title = 'biotrade';
